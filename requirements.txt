@@ -2,5 +2,8 @@ numpy
 pandas
 scikit-learn
 matplotlib
+scipy
 shap
 jupyter
+joblib
+openpyxl
