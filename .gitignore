@@ -2,6 +2,17 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.vscode/
 .DS_Store
 Thumbs.db
-.vscode/
+
+# Project data
+data/raw/
+data/interim/
+data/processed/
+
+# Trained models
+models/
+
+# Logs
+*.log
