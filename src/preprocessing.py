@@ -1,1 +1,153 @@
+# Cleaned Demographic Table
 
+from pathlib import Path
+import pandas as pd
+
+input_file = Path("../data/processed/patients.csv")
+output_folder = Path("demographics_outputs")
+output_folder.mkdir(exist_ok=True)
+
+if not input_file.exists():
+    raise FileNotFoundError(
+        f"Could not find {input_file}. "
+        "Place patients.csv in the notebook folder or update the path."
+    )
+
+# Load demographic data
+df = pd.read_csv(input_file)
+
+# Keep original diagnosis for traceability
+df["condition_original"] = df["condition"]
+
+# Standardize categorical values
+df["gender"] = df["gender"].str.strip().str.title()
+df["handedness"] = df["handedness"].str.strip().str.title()
+
+yes_no_map = {
+    True: "Yes",
+    False: "No",
+    "True": "Yes",
+    "False": "No",
+    "Yes": "Yes",
+    "No": "No",
+}
+
+df["family_history_any"] = (
+    df["appearance_in_kinship"]
+    .map(yes_no_map)
+    .fillna("Unknown")
+)
+
+df["family_history_first_degree"] = (
+    df["appearance_in_first_grade_kinship"]
+    .map(yes_no_map)
+    .fillna("Unknown")
+)
+
+df["alcohol_effect_on_tremor"] = (
+    df["effect_of_alcohol_on_tremor"]
+    .fillna("Unknown")
+    .astype(str)
+    .str.strip()
+    .str.title()
+)
+
+# Create standardized three-class outcome
+condition_map = {
+    0: "Healthy Control",
+    1: "Parkinson's Disease",
+    2: "Other Movement Disorder",
+}
+
+df["condition_group"] = df["label"].map(condition_map)
+
+# Convert numerical variables
+numeric_columns = [
+    "age",
+    "age_at_diagnosis",
+    "height_cm",
+    "weight_kg",
+]
+
+for column in numeric_columns:
+    df[column] = pd.to_numeric(df[column], errors="coerce")
+
+# Review implausible numerical values
+df.loc[~df["age"].between(18, 100), "age"] = pd.NA
+df.loc[~df["height_cm"].between(120, 230), "height_cm"] = pd.NA
+df.loc[~df["weight_kg"].between(30, 250), "weight_kg"] = pd.NA
+
+# Diagnosis age is not applicable to healthy controls
+df.loc[
+    df["condition_group"] == "Healthy Control",
+    "age_at_diagnosis",
+] = pd.NA
+
+# Remove invalid diagnosis ages
+df.loc[
+    (df["age_at_diagnosis"] <= 0)
+    | (df["age_at_diagnosis"] > df["age"]),
+    "age_at_diagnosis",
+] = pd.NA
+
+# Flag duplicate participant IDs
+df["duplicate_patient_id"] = df["patient_id"].duplicated(
+    keep=False
+)
+
+# Exclude free-text clinical comments to reduce sensitivity
+# and prevent possible target leakage.
+columns_to_keep = [
+    "patient_id",
+    "study_id",
+    "condition_original",
+    "condition_group",
+    "label",
+    "age",
+    "age_at_diagnosis",
+    "height_cm",
+    "weight_kg",
+    "gender",
+    "handedness",
+    "family_history_any",
+    "family_history_first_degree",
+    "alcohol_effect_on_tremor",
+    "duplicate_patient_id",
+]
+
+clean_df = df[columns_to_keep].copy()
+
+# Save cleaned demographic table
+clean_file = output_folder / "demographics_clean.csv"
+clean_df.to_csv(clean_file, index=False)
+
+# Create a simple cleaning summary
+summary = pd.DataFrame({
+    "Check": [
+        "Total records",
+        "Unique participant IDs",
+        "Duplicate participant records",
+        "Missing age",
+        "Missing age at diagnosis",
+        "Missing height",
+        "Missing weight",
+    ],
+    "Count": [
+        len(clean_df),
+        clean_df["patient_id"].nunique(),
+        clean_df["duplicate_patient_id"].sum(),
+        clean_df["age"].isna().sum(),
+        clean_df["age_at_diagnosis"].isna().sum(),
+        clean_df["height_cm"].isna().sum(),
+        clean_df["weight_kg"].isna().sum(),
+    ],
+})
+
+summary_file = output_folder / "demographics_qa_summary.csv"
+summary.to_csv(summary_file, index=False)
+
+print("Demographic cleaning completed.")
+print(f"Clean data: {clean_file}")
+print(f"QA summary: {summary_file}")
+
+clean_df.head()
