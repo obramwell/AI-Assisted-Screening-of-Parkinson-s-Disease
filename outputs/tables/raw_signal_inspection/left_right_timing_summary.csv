@@ -1,0 +1,10 @@
+Metric,Value
+Participant-task pairs,5159.0
+Pairs with different sample counts,0.0
+Pairs with identical timestamp grids,0.0
+Pairs with non-identical timestamp grids,5159.0
+Median absolute duration difference (ms),73.61698160000074
+95th percentile absolute duration difference (ms),148.57845306999945
+Maximum absolute duration difference (ms),252.91061399999748
+Median absolute sampling-frequency difference (Hz),0.7125286398763393
+Maximum absolute sampling-frequency difference (Hz),1.2604440608896823

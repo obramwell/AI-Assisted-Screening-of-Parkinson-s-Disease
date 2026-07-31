@@ -1,0 +1,6 @@
+Quality Issue,Affected Participants,Percentage (%),Example Participant IDs
+Age outside 18–100 years,0,0.0,
+Height outside 120–220 cm,1,0.21,227
+Weight outside 35–250 kg,0,0.0,
+Age at diagnosis less than or equal to zero,19,4.05,"037, 098, 117, 120, 176"
+Age at diagnosis greater than current age,0,0.0,

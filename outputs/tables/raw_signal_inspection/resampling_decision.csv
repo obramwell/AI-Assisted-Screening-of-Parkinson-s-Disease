@@ -1,0 +1,7 @@
+Assessment,Result
+Any non-increasing timestamps,False
+Any intervals outside 0.008–0.012 s,True
+All paired wrist grids exactly identical,False
+Uniform resampling required for FFT,True
+Uniform resampling required for bilateral features,True
+Raw files modified,False

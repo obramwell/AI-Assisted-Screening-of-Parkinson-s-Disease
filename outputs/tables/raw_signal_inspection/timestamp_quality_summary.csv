@@ -1,0 +1,17 @@
+Metric,Value
+Files analyzed,10318.0
+Files with unexpected sample counts,0.0
+Files with missing values,0.0
+Files with infinite values,0.0
+Files with duplicate timestamps,0.0
+Files with negative intervals,0.0
+Files with non-increasing intervals,0.0
+Files with intervals below 0.008 s,9694.0
+Files with intervals above 0.012 s,9956.0
+Minimum observed interval (s),1.3351399999805835e-05
+Maximum observed interval (s),0.6465768814000006
+Median mean-based sampling frequency (Hz),99.91811045499901
+Median median-based sampling frequency (Hz),99.95958447726747
+Median timestamp jitter (ms),0.30143480215094487
+95th percentile timestamp jitter (ms),1.8592166043266567
+Maximum timestamp jitter (ms),20.301982474115082

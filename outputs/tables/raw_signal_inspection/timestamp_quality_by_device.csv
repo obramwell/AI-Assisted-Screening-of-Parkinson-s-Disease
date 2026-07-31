@@ -1,0 +1,3 @@
+device,recordings,mean_sampling_frequency_hz,median_sampling_frequency_hz,median_jitter_ms,p95_jitter_ms,files_with_short_intervals,files_with_long_intervals,files_with_non_increasing_time,minimum_interval_seconds,maximum_interval_seconds
+Apple Watch Series 3,2970,99.69205,99.747415,0.300134,1.741294,2835,2888,0,1.5e-05,0.089805
+Apple Watch Series 4,7348,99.789214,99.959584,0.301913,1.910681,6859,7068,0,1.3e-05,0.646577
