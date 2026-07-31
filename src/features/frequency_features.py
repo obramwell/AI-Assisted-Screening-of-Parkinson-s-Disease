@@ -1,21 +1,4 @@
-"""Frequency-domain feature extraction for preprocessed PADS smartwatch signals.
-
-Expected input
---------------
-One compressed ``.npz`` file per participant in:
-    data/processed/preprocessed_signals/
-
-Each participant file should contain:
-- ``__columns__``: ordered signal-column names
-- ``__recording_keys__``: recording keys such as ``CrossArms__LeftWrist``
-- one 2D array per recording key
-
-Expected signal columns
------------------------
-Time, Accelerometer_X, Accelerometer_Y, Accelerometer_Z,
-Gyroscope_X, Gyroscope_Y, Gyroscope_Z,
-Acc_Magnitude, Gyro_Magnitude
-"""
+"""Frequency-domain feature extraction for preprocessed PADS smartwatch signals."""
 
 from __future__ import annotations
 
@@ -76,11 +59,7 @@ def _safe_feature_name(signal_name: str) -> str:
 
 
 def infer_sampling_frequency(time_values: np.ndarray) -> float:
-    """Infer sampling frequency from a recording's time channel.
-
-    Uses the median positive finite time difference to reduce sensitivity to
-    small timestamp irregularities.
-    """
+    """Infer sampling frequency from the median positive time interval."""
     time_values = np.asarray(time_values, dtype=float)
     finite_time = time_values[np.isfinite(time_values)]
 
@@ -88,7 +67,9 @@ def infer_sampling_frequency(time_values: np.ndarray) -> float:
         raise ValueError("At least two finite time values are required.")
 
     differences = np.diff(finite_time)
-    valid_differences = differences[np.isfinite(differences) & (differences > 0)]
+    valid_differences = differences[
+        np.isfinite(differences) & (differences > 0)
+    ]
 
     if valid_differences.size == 0:
         raise ValueError("No positive time differences were found.")
@@ -122,9 +103,13 @@ def compute_power_spectrum(
     windowed = centered * window
 
     fft_values = np.fft.rfft(windowed)
-    frequencies = np.fft.rfftfreq(centered.size, d=1.0 / sampling_frequency)
+    frequencies = np.fft.rfftfreq(
+        centered.size,
+        d=1.0 / sampling_frequency,
+    )
 
     window_energy = float(np.sum(window**2))
+
     if window_energy <= 0:
         power = np.zeros_like(frequencies, dtype=float)
     else:
@@ -132,7 +117,6 @@ def compute_power_spectrum(
             sampling_frequency * window_energy
         )
 
-        # Convert to a one-sided PSD while preserving DC and Nyquist bins.
         if centered.size % 2 == 0 and power.size > 2:
             power[1:-1] *= 2.0
         elif power.size > 1:
@@ -145,12 +129,23 @@ def compute_power_spectrum(
     )
 
 
+def _integrate_trapezoid(
+    values: np.ndarray,
+    coordinates: np.ndarray,
+) -> float:
+    """Integrate with support for both newer and older NumPy versions."""
+    if hasattr(np, "trapezoid"):
+        return float(np.trapezoid(values, coordinates))
+
+    return float(np.trapz(values, coordinates))
+
+
 def extract_frequency_metrics(
     signal: np.ndarray,
     sampling_frequency: float,
     exclude_dc: bool = True,
 ) -> dict[str, float]:
-    """Extract dominant frequency, centroid, entropy, and total spectral power."""
+    """Extract dominant frequency, centroid, entropy, and spectral power."""
     spectrum = compute_power_spectrum(signal, sampling_frequency)
     frequencies = spectrum.frequencies
     power = spectrum.power
@@ -171,7 +166,7 @@ def extract_frequency_metrics(
         return {metric: np.nan for metric in FREQUENCY_METRICS}
 
     total_power_sum = float(np.sum(power))
-    spectral_power = float(np.trapezoid(power, frequencies))
+    spectral_power = _integrate_trapezoid(power, frequencies)
 
     if total_power_sum <= 0:
         dominant_frequency = 0.0
@@ -182,6 +177,7 @@ def extract_frequency_metrics(
         spectral_centroid = float(
             np.sum(frequencies * power) / total_power_sum
         )
+
         probabilities = power / total_power_sum
         positive_probabilities = probabilities[probabilities > 0]
 
@@ -204,12 +200,14 @@ def extract_frequency_metrics(
 
 
 def split_recording_key(recording_key: str) -> tuple[str, str]:
-    """Split a key such as ``CrossArms__LeftWrist`` into task and wrist."""
+    """Split a recording key such as CrossArms__LeftWrist."""
     parts = str(recording_key).split("__", maxsplit=1)
+
     if len(parts) != 2:
         raise ValueError(
             f"Recording key does not follow 'Task__Wrist': {recording_key}"
         )
+
     return parts[0], parts[1]
 
 
@@ -219,24 +217,27 @@ def extract_recording_features(
     patient_id: str,
     recording_key: str,
 ) -> dict[str, object]:
-    """Extract all requested frequency-domain features from one recording."""
+    """Extract all requested frequency features from one recording."""
     column_names = [str(column) for column in columns]
+
     required_columns = (
         "Time",
         *ACCELEROMETER_SIGNALS,
         *GYROSCOPE_SIGNALS,
     )
+
     missing = [
         column for column in required_columns if column not in column_names
     ]
+
     if missing:
-        raise ValueError(
-            f"Recording is missing required columns: {missing}"
-        )
+        raise ValueError(f"Recording is missing required columns: {missing}")
 
     recording = np.asarray(recording, dtype=float)
+
     if recording.ndim != 2:
         raise ValueError("Each recording must be a two-dimensional array.")
+
     if recording.shape[1] != len(column_names):
         raise ValueError(
             "Recording column count does not match __columns__ metadata."
@@ -262,6 +263,7 @@ def extract_recording_features(
             sampling_frequency=sampling_frequency,
         )
         prefix = _safe_feature_name(signal_name)
+
         for metric_name, metric_value in metrics.items():
             row[f"{prefix}_{metric_name}"] = metric_value
 
@@ -269,13 +271,14 @@ def extract_recording_features(
 
 
 def extract_participant_features(npz_path: str | Path) -> pd.DataFrame:
-    """Extract one feature row per task/wrist recording for one participant."""
+    """Extract one row per task and wrist for one participant."""
     npz_path = Path(npz_path)
     patient_id = npz_path.stem.replace("_preprocessed", "")
 
     with np.load(npz_path, allow_pickle=False) as participant_data:
         required_metadata = {"__columns__", "__recording_keys__"}
         missing_metadata = required_metadata.difference(participant_data.files)
+
         if missing_metadata:
             raise ValueError(
                 f"{npz_path.name} is missing metadata: "
@@ -284,16 +287,20 @@ def extract_participant_features(npz_path: str | Path) -> pd.DataFrame:
 
         columns = participant_data["__columns__"].astype(str).tolist()
         recording_keys = (
-            participant_data["__recording_keys__"].astype(str).tolist()
+            participant_data["__recording_keys__"]
+            .astype(str)
+            .tolist()
         )
 
         rows = []
+
         for recording_key in recording_keys:
             if recording_key not in participant_data.files:
                 raise KeyError(
                     f"{recording_key} is listed in __recording_keys__ "
                     f"but is absent from {npz_path.name}."
                 )
+
             rows.append(
                 extract_recording_features(
                     recording=participant_data[recording_key],
@@ -310,28 +317,32 @@ def build_frequency_feature_table(
     npz_directory: str | Path,
     pattern: str = "*_preprocessed.npz",
 ) -> pd.DataFrame:
-    """Build the dataset-wide frequency-domain feature table."""
+    """Build the complete frequency-domain feature table."""
     npz_directory = Path(npz_directory)
+
     if not npz_directory.exists():
         raise FileNotFoundError(
             f"Processed-signal directory not found: {npz_directory}"
         )
 
     npz_files = sorted(npz_directory.glob(pattern))
+
     if not npz_files:
         raise FileNotFoundError(
             f"No files matching '{pattern}' were found in {npz_directory}."
         )
 
     participant_tables = [
-        extract_participant_features(npz_path) for npz_path in npz_files
+        extract_participant_features(npz_path)
+        for npz_path in npz_files
     ]
-    feature_table = pd.concat(participant_tables, ignore_index=True)
 
+    feature_table = pd.concat(participant_tables, ignore_index=True)
     feature_columns = get_frequency_feature_columns(feature_table)
-    feature_table[feature_columns] = feature_table[feature_columns].replace(
-        [np.inf, -np.inf],
-        np.nan,
+
+    feature_table[feature_columns] = (
+        feature_table[feature_columns]
+        .replace([np.inf, -np.inf], np.nan)
     )
 
     return feature_table
@@ -340,8 +351,9 @@ def build_frequency_feature_table(
 def get_frequency_feature_columns(
     feature_table: pd.DataFrame,
 ) -> list[str]:
-    """Return only wearable frequency-feature columns."""
+    """Return only frequency-domain wearable-feature columns."""
     suffixes = tuple(f"_{metric}" for metric in FREQUENCY_METRICS)
+
     return [
         column
         for column in feature_table.columns
@@ -375,8 +387,9 @@ def compute_feature_correlations(
     feature_table: pd.DataFrame,
     method: str = "pearson",
 ) -> pd.DataFrame:
-    """Compute correlations among frequency-domain wearable features."""
+    """Compute correlations among wearable frequency features."""
     feature_columns = get_frequency_feature_columns(feature_table)
+
     if not feature_columns:
         raise ValueError("No frequency-domain feature columns were found.")
 
@@ -390,7 +403,7 @@ def summarize_strong_correlations(
     correlation_matrix: pd.DataFrame,
     threshold: float = 0.80,
 ) -> pd.DataFrame:
-    """Return unique feature pairs with absolute correlation above threshold."""
+    """Return unique feature pairs above an absolute correlation threshold."""
     if not 0 < threshold <= 1:
         raise ValueError("threshold must be greater than 0 and at most 1.")
 
@@ -402,7 +415,10 @@ def summarize_strong_correlations(
             feature_2 = columns[right_index]
             correlation = correlation_matrix.iloc[left_index, right_index]
 
-            if pd.isna(correlation) or abs(float(correlation)) < threshold:
+            if pd.isna(correlation):
+                continue
+
+            if abs(float(correlation)) < threshold:
                 continue
 
             group_1 = (
@@ -416,10 +432,9 @@ def summarize_strong_correlations(
                 else "Gyroscope"
             )
 
-            if group_1 == group_2:
-                relationship_group = group_1
-            else:
-                relationship_group = "Cross-sensor"
+            relationship_group = (
+                group_1 if group_1 == group_2 else "Cross-sensor"
+            )
 
             rows.append(
                 {
@@ -458,11 +473,12 @@ def build_correlation_summary(
     strong_correlations: pd.DataFrame,
     threshold: float,
 ) -> pd.DataFrame:
-    """Create a compact QA and correlation-summary table."""
+    """Create a compact feature and correlation summary."""
     accelerator_columns = get_accelerometer_feature_columns(feature_table)
     gyroscope_columns = get_gyroscope_feature_columns(feature_table)
 
     relationship_counts: Mapping[str, int]
+
     if strong_correlations.empty:
         relationship_counts = {}
     else:
@@ -496,3 +512,22 @@ def build_correlation_summary(
     ]
 
     return pd.DataFrame(summary_rows, columns=["metric", "value"])
+
+
+if __name__ == "__main__":
+    project_root = Path(__file__).resolve().parents[2]
+    npz_dir = (
+        project_root
+        / "data"
+        / "processed"
+        / "preprocessed_signals"
+    )
+
+    print("Project root:", project_root)
+    print("Processed signal directory:", npz_dir)
+
+    test_table = build_frequency_feature_table(npz_dir)
+
+    print("\nFrequency-feature extraction completed successfully.")
+    print("Feature table shape:", test_table.shape)
+    print(test_table.head())
