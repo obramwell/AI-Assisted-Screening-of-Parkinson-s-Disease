@@ -1,0 +1,15 @@
+Variable,Data Type,Missing Values,Missing (%),Unique Values
+patient_id,string,0,0.0,469
+study_id,str,0,0.0,1
+condition,str,0,0.0,6
+label,int64,0,0.0,3
+disease_comment,str,0,0.0,140
+age_at_diagnosis,int64,0,0.0,65
+age,int64,0,0.0,48
+height_cm,int64,0,0.0,49
+weight_kg,int64,0,0.0,77
+gender,str,0,0.0,2
+handedness,str,0,0.0,2
+appearance_in_kinship,bool,0,0.0,2
+appearance_in_first_grade_kinship,object,288,61.41,2
+effect_of_alcohol_on_tremor,str,0,0.0,4
