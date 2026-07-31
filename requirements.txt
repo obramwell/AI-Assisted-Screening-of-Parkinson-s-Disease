@@ -7,3 +7,5 @@ shap
 jupyter
 joblib
 openpyxl
+cvxpy
+cvxopt
