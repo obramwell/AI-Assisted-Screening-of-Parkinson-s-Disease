@@ -1,0 +1,21 @@
+patient_id,condition,label,age,age_at_diagnosis,height_cm,weight_kg
+037,Other Movement Disorders,2,70,0,171,78
+098,Multiple Sclerosis,2,59,0,192,115
+117,Other Movement Disorders,2,82,0,172,76
+120,Parkinson's,1,67,0,175,75
+176,Other Movement Disorders,2,43,0,168,110
+178,Other Movement Disorders,2,41,0,174,66
+195,Multiple Sclerosis,2,57,0,182,87
+227,Healthy,0,65,65,55,59
+237,Parkinson's,1,60,0,168,70
+242,Parkinson's,1,59,0,175,105
+260,Parkinson's,1,68,0,178,90
+314,Other Movement Disorders,2,52,0,176,80
+321,Other Movement Disorders,2,66,0,162,62
+322,Parkinson's,1,59,0,184,98
+344,Parkinson's,1,75,0,194,87
+348,Parkinson's,1,67,0,180,83
+434,Other Movement Disorders,2,75,0,162,52
+450,Other Movement Disorders,2,59,0,186,83
+453,Other Movement Disorders,2,48,0,164,59
+462,Other Movement Disorders,2,58,0,160,75

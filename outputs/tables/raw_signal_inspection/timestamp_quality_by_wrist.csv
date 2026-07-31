@@ -1,0 +1,3 @@
+wrist,recordings,mean_sampling_frequency_hz,median_sampling_frequency_hz,median_jitter_ms,p95_jitter_ms,files_with_short_intervals,files_with_long_intervals,files_with_non_increasing_time,minimum_interval_seconds,maximum_interval_seconds
+Left,5159,99.97418,100.050188,0.349538,1.876634,4967,5022,0,1.4e-05,0.646577
+Right,5159,99.548311,99.344008,0.273056,1.827025,4727,4934,0,1.3e-05,0.217657
