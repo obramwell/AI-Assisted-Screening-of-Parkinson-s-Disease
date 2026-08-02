@@ -31,6 +31,8 @@ FREQUENCY_METRICS = (
     "spectral_power",
 )
 
+TARGET_SAMPLING_FREQUENCY = 100.0
+
 
 @dataclass(frozen=True)
 class Spectrum:
@@ -59,7 +61,7 @@ def _safe_feature_name(signal_name: str) -> str:
 
 
 def infer_sampling_frequency(time_values: np.ndarray) -> float:
-    """Infer sampling frequency from the median positive time interval."""
+    """Estimate sampling frequency for quality-assurance reporting only."""
     time_values = np.asarray(time_values, dtype=float)
     finite_time = time_values[np.isfinite(time_values)]
 
@@ -81,6 +83,85 @@ def infer_sampling_frequency(time_values: np.ndarray) -> float:
         raise ValueError("Could not infer a valid sampling frequency.")
 
     return sampling_frequency
+
+
+def resample_recording_to_uniform_grid(
+    recording: np.ndarray,
+    columns: Iterable[str],
+    target_sampling_frequency: float = TARGET_SAMPLING_FREQUENCY,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Interpolate a recording onto a uniform 100 Hz grid.
+
+    The existing post-trim number of samples is preserved exactly, so
+    recordings with 976 or 2,000 samples retain those lengths.
+    """
+    if target_sampling_frequency <= 0:
+        raise ValueError("target_sampling_frequency must be positive.")
+
+    column_names = [str(column) for column in columns]
+    recording = np.asarray(recording, dtype=float)
+
+    if recording.ndim != 2:
+        raise ValueError("Each recording must be a two-dimensional array.")
+
+    if recording.shape[1] != len(column_names):
+        raise ValueError(
+            "Recording column count does not match the supplied columns."
+        )
+
+    if "Time" not in column_names:
+        raise ValueError("The recording must contain a Time column.")
+
+    time_index = column_names.index("Time")
+    original_time = recording[:, time_index]
+
+    if original_time.size < 2:
+        raise ValueError("At least two samples are required for resampling.")
+
+    if not np.isfinite(original_time).all():
+        raise ValueError("Time values must all be finite before resampling.")
+
+    relative_time = original_time - original_time[0]
+    differences = np.diff(relative_time)
+
+    if np.any(differences <= 0):
+        raise ValueError(
+            "Time values must be strictly increasing before resampling."
+        )
+
+    sample_count = recording.shape[0]
+    uniform_time = (
+        np.arange(sample_count, dtype=float)
+        / float(target_sampling_frequency)
+    )
+
+    resampled_recording = np.empty_like(recording, dtype=float)
+    resampled_recording[:, time_index] = uniform_time
+
+    for column_index in range(recording.shape[1]):
+        if column_index == time_index:
+            continue
+
+        signal_values = recording[:, column_index]
+
+        if not np.isfinite(signal_values).all():
+            raise ValueError(
+                f"Signal column {column_names[column_index]} contains "
+                "non-finite values."
+            )
+
+        resampled_recording[:, column_index] = np.interp(
+            uniform_time,
+            relative_time,
+            signal_values,
+        )
+
+    if resampled_recording.shape != recording.shape:
+        raise RuntimeError(
+            "Resampling unexpectedly changed the recording shape."
+        )
+
+    return uniform_time, resampled_recording
 
 
 def compute_power_spectrum(
@@ -217,7 +298,7 @@ def extract_recording_features(
     patient_id: str,
     recording_key: str,
 ) -> dict[str, object]:
-    """Extract all requested frequency features from one recording."""
+    """Extract frequency features after uniform 100 Hz interpolation."""
     column_names = [str(column) for column in columns]
 
     required_columns = (
@@ -245,23 +326,47 @@ def extract_recording_features(
 
     task, wrist = split_recording_key(recording_key)
     time_index = column_names.index("Time")
-    sampling_frequency = infer_sampling_frequency(recording[:, time_index])
+    original_time = recording[:, time_index]
+
+    original_sampling_frequency = infer_sampling_frequency(original_time)
+
+    uniform_time, resampled_recording = (
+        resample_recording_to_uniform_grid(
+            recording=recording,
+            columns=column_names,
+            target_sampling_frequency=TARGET_SAMPLING_FREQUENCY,
+        )
+    )
+
+    original_sample_count = int(recording.shape[0])
+    resampled_sample_count = int(resampled_recording.shape[0])
+
+    if resampled_sample_count != original_sample_count:
+        raise RuntimeError(
+            "Uniform resampling changed the post-trim sample count."
+        )
 
     row: dict[str, object] = {
         "patient_id": str(patient_id),
         "recording_key": str(recording_key),
         "task": task,
         "wrist": wrist,
-        "n_samples": int(recording.shape[0]),
-        "sampling_frequency_hz": sampling_frequency,
+        "n_samples": original_sample_count,
+        "original_sampling_frequency_hz": original_sampling_frequency,
+        "sampling_frequency_hz": TARGET_SAMPLING_FREQUENCY,
+        "resampled_n_samples": resampled_sample_count,
+        "uniform_time_start_s": float(uniform_time[0]),
+        "uniform_time_end_s": float(uniform_time[-1]),
     }
 
     for signal_name in (*ACCELEROMETER_SIGNALS, *GYROSCOPE_SIGNALS):
         signal_index = column_names.index(signal_name)
+
         metrics = extract_frequency_metrics(
-            recording[:, signal_index],
-            sampling_frequency=sampling_frequency,
+            resampled_recording[:, signal_index],
+            sampling_frequency=TARGET_SAMPLING_FREQUENCY,
         )
+
         prefix = _safe_feature_name(signal_name)
 
         for metric_name, metric_value in metrics.items():
@@ -530,4 +635,34 @@ if __name__ == "__main__":
 
     print("\nFrequency-feature extraction completed successfully.")
     print("Feature table shape:", test_table.shape)
+
+    length_summary = (
+        test_table["resampled_n_samples"]
+        .value_counts()
+        .sort_index()
+    )
+
+    print("\nPost-resampling sample-length summary:")
+    print(length_summary)
+
+    unexpected_lengths = set(length_summary.index) - {976, 2000}
+
+    if unexpected_lengths:
+        raise AssertionError(
+            "Unexpected post-resampling lengths found: "
+            f"{sorted(unexpected_lengths)}"
+        )
+
+    if not (
+        test_table["n_samples"]
+        == test_table["resampled_n_samples"]
+    ).all():
+        raise AssertionError(
+            "At least one recording changed length during resampling."
+        )
+
+    print(
+        "\nConfirmed: all recordings retain post-trim lengths "
+        "of 976 or 2,000 samples."
+    )
     print(test_table.head())
