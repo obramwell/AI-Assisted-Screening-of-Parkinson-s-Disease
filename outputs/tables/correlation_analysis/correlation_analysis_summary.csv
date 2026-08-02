@@ -6,7 +6,10 @@ Wrists,2.0
 Accelerometer frequency features,16.0
 Gyroscope frequency features,16.0
 Strong-correlation threshold,0.8
-Strongly correlated feature pairs,14.0
-Accelerometer-only strong pairs,4.0
-Gyroscope-only strong pairs,9.0
+Strongly correlated feature pairs,12.0
+Accelerometer-only strong pairs,3.0
+Gyroscope-only strong pairs,8.0
 Cross-sensor strong pairs,1.0
+Target sampling frequency (Hz),100.0
+Recordings with preserved post-trim length,10318
+Observed post-trim lengths,"976, 2000"
