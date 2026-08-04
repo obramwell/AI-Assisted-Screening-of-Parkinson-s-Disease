@@ -1,0 +1,4 @@
+Feature,Missing Values,Infinite Values,Unique Values,Variance,Constant,Low Variance,Invalid
+Accelerometer_X_Mean,0,0,10318,6.632958727063731e-07,False,True,False
+Accelerometer_Y_Mean,0,0,10318,8.64169637704274e-07,False,True,False
+Accelerometer_Z_Mean,0,0,10318,9.63226159123911e-07,False,True,False
