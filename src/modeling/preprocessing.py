@@ -18,6 +18,7 @@ from sklearn.preprocessing import StandardScaler
 from src.modeling.config import (
     PARTICIPANT_ID_COLUMN,
     TARGET_COLUMN,
+    DIAGNOSIS_COLUMNS,
 )
 
 # =============================================================================
@@ -25,19 +26,14 @@ from src.modeling.config import (
 # =============================================================================
 
 EXCLUDED_COLUMNS = [
-    # Participant identifiers
     PARTICIPANT_ID_COLUMN,
     "study_id",
     "duplicate_patient_id",
 
-    # Target variable
     TARGET_COLUMN,
 
-    # Diagnosis-related variables (prevent label leakage)
-    "condition_original",
-    "condition_group",
+    *DIAGNOSIS_COLUMNS,
 
-    # Metadata
     "questionnaire_name",
 ]
 

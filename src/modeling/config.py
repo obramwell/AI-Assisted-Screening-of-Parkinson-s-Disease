@@ -1,7 +1,9 @@
 """
-This module centralizes the configuration used by all baseline
-machine learning experiments to ensure consistent training,
-validation, and evaluation across all data modalities.
+Configuration settings for the Week 4 modeling framework.
+
+This module centralizes project paths, dataset filenames,
+column names, random seeds, and modeling parameters used
+throughout the baseline modeling framework.
 """
 
 from pathlib import Path
@@ -13,62 +15,51 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 DATA_DIR = PROJECT_ROOT / "data"
-
 PROCESSED_DIR = DATA_DIR / "processed"
 
-OUTPUT_DIR = PROJECT_ROOT / "outputs"
-
-TABLES_DIR = OUTPUT_DIR / "tables"
-
-FIGURES_DIR = OUTPUT_DIR / "figures"
-
-METRICS_DIR = OUTPUT_DIR / "metrics"
-
-MODELS_DIR = PROJECT_ROOT / "models"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+METRICS_DIR = OUTPUTS_DIR / "metrics"
+FIGURES_DIR = OUTPUTS_DIR / "figures"
 
 # =============================================================================
 # Input datasets
 # =============================================================================
 
-FULL_DATASET_FILE = (
-    PROCESSED_DIR /
-    "integrated_participant_dataset.csv"
-)
-
-TRAIN_DATASET_FILE = (
+TRAIN_DATASET = (
     PROCESSED_DIR /
     "train_participant_dataset.csv"
 )
 
-VALIDATION_DATASET_FILE = (
+VALIDATION_DATASET = (
     PROCESSED_DIR /
     "validation_participant_dataset.csv"
 )
 
-TEST_DATASET_FILE = (
+TEST_DATASET = (
     PROCESSED_DIR /
     "test_participant_dataset.csv"
 )
 
 # =============================================================================
-# Dataset columns
+# Column names
 # =============================================================================
 
 PARTICIPANT_ID_COLUMN = "patient_id"
 
-TARGET_COLUMN = "Label"
+TARGET_COLUMN = "label"
+
+DIAGNOSIS_COLUMNS = [
+    "condition_original",
+    "condition_group",
+]
 
 # =============================================================================
-# Dataset split
+# Train / validation / test split
 # =============================================================================
 
-TRAIN_SPLIT = 0.70
-
-VALIDATION_SPLIT = 0.15
-
-TEST_SPLIT = 0.15
-
-GROUPED_VALIDATION = True
+TRAIN_SIZE = 0.70
+VALIDATION_SIZE = 0.15
+TEST_SIZE = 0.15
 
 # =============================================================================
 # Reproducibility
@@ -77,24 +68,10 @@ GROUPED_VALIDATION = True
 RANDOM_STATE = 42
 
 # =============================================================================
-# Class imbalance
+# Cross-validation
 # =============================================================================
 
-USE_CLASS_WEIGHT = True
-
-CLASS_WEIGHT = "balanced"
-
-# =============================================================================
-# Baseline model configuration
-# =============================================================================
-
-DUMMY_STRATEGY = "most_frequent"
-
-LOGISTIC_MAX_ITER = 1000
-
-TREE_CRITERION = "gini"
-
-TREE_MAX_DEPTH = None
+N_SPLITS = 5
 
 # =============================================================================
 # Evaluation metrics
@@ -102,7 +79,7 @@ TREE_MAX_DEPTH = None
 
 PRIMARY_METRIC = "macro_f1"
 
-METRICS = [
+CLASSIFICATION_METRICS = [
     "accuracy",
     "balanced_accuracy",
     "macro_f1",
