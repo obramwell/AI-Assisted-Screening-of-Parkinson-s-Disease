@@ -1,9 +1,9 @@
 """
 Configuration settings for the Week 4 modeling framework.
 
-This module centralizes project paths, dataset filenames,
-column names, random seeds, and modeling parameters used
-throughout the baseline modeling framework.
+This module centralizes project paths, dataset locations,
+column names, random seeds, modeling parameters,
+and evaluation settings.
 """
 
 from pathlib import Path
@@ -15,11 +15,26 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 DATA_DIR = PROJECT_ROOT / "data"
-PROCESSED_DIR = DATA_DIR / "processed"
 
-OUTPUTS_DIR = PROJECT_ROOT / "outputs"
-METRICS_DIR = OUTPUTS_DIR / "metrics"
-FIGURES_DIR = OUTPUTS_DIR / "figures"
+PROCESSED_DIR = (
+    DATA_DIR /
+    "processed"
+)
+
+OUTPUTS_DIR = (
+    PROJECT_ROOT /
+    "outputs"
+)
+
+METRICS_DIR = (
+    OUTPUTS_DIR /
+    "metrics"
+)
+
+FIGURES_DIR = (
+    OUTPUTS_DIR /
+    "figures"
+)
 
 # =============================================================================
 # Input datasets
@@ -54,11 +69,13 @@ DIAGNOSIS_COLUMNS = [
 ]
 
 # =============================================================================
-# Train / validation / test split
+# Dataset split
 # =============================================================================
 
 TRAIN_SIZE = 0.70
+
 VALIDATION_SIZE = 0.15
+
 TEST_SIZE = 0.15
 
 # =============================================================================
@@ -80,9 +97,41 @@ N_SPLITS = 5
 PRIMARY_METRIC = "macro_f1"
 
 CLASSIFICATION_METRICS = [
-    "accuracy",
-    "balanced_accuracy",
     "macro_f1",
+    "balanced_accuracy",
+    "accuracy",
     "precision_macro",
     "recall_macro",
 ]
+
+# =============================================================================
+# Class imbalance
+# =============================================================================
+
+USE_CLASS_WEIGHT = True
+
+CLASS_WEIGHT = "balanced"
+
+# =============================================================================
+# Dummy classifier
+# =============================================================================
+
+DUMMY_STRATEGY = "most_frequent"
+
+# =============================================================================
+# Logistic Regression
+# =============================================================================
+
+LOGISTIC_MAX_ITER = 1000
+
+# =============================================================================
+# Decision Tree
+# =============================================================================
+
+TREE_CRITERION = "gini"
+
+TREE_MAX_DEPTH = 5
+
+TREE_MIN_SAMPLES_SPLIT = 2
+
+TREE_MIN_SAMPLES_LEAF = 5

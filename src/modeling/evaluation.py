@@ -119,9 +119,22 @@ def get_confusion_matrix(
     matrix = confusion_matrix(
         y_true,
         y_pred,
+        labels=[0, 1, 2],
     )
 
-    return pd.DataFrame(matrix)
+    return pd.DataFrame(
+    matrix,
+    index=[
+        "True_Healthy",
+        "True_PD",
+        "True_Other",
+    ],
+    columns=[
+        "Pred_Healthy",
+        "Pred_PD",
+        "Pred_Other",
+    ],
+)
 
 
 # =============================================================================

@@ -9,12 +9,20 @@ ensure that identical datasets are loaded across experiments.
 import pandas as pd
 
 from src.modeling.config import (
-    FULL_DATASET_FILE,
-    TRAIN_DATASET_FILE,
-    VALIDATION_DATASET_FILE,
-    TEST_DATASET_FILE,
+    PROCESSED_DIR,
+    TRAIN_DATASET,
+    VALIDATION_DATASET,
+    TEST_DATASET,
 )
 
+# =============================================================================
+# Dataset file
+# =============================================================================
+
+FULL_DATASET = (
+    PROCESSED_DIR /
+    "integrated_participant_dataset.csv"
+)
 
 # =============================================================================
 # Dataset loading
@@ -29,8 +37,9 @@ def load_full_dataset() -> pd.DataFrame:
     pd.DataFrame
         Complete integrated dataset.
     """
+
     return pd.read_csv(
-        FULL_DATASET_FILE,
+        FULL_DATASET,
         dtype={"patient_id": str},
     )
 
@@ -44,8 +53,9 @@ def load_train_dataset() -> pd.DataFrame:
     pd.DataFrame
         Training dataset.
     """
+
     return pd.read_csv(
-        TRAIN_DATASET_FILE,
+        TRAIN_DATASET,
         dtype={"patient_id": str},
     )
 
@@ -59,8 +69,9 @@ def load_validation_dataset() -> pd.DataFrame:
     pd.DataFrame
         Validation dataset.
     """
+
     return pd.read_csv(
-        VALIDATION_DATASET_FILE,
+        VALIDATION_DATASET,
         dtype={"patient_id": str},
     )
 
@@ -74,8 +85,9 @@ def load_test_dataset() -> pd.DataFrame:
     pd.DataFrame
         Testing dataset.
     """
+
     return pd.read_csv(
-        TEST_DATASET_FILE,
+        TEST_DATASET,
         dtype={"patient_id": str},
     )
 

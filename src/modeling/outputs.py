@@ -1,14 +1,15 @@
 """
-Output utilities for the Week 4 modeling framework.
+Output utilities for the modeling framework.
 
 This module provides reusable functions for saving model
-evaluation results, classification reports, and confusion
-matrices.
+evaluation results, classification reports, confusion
+matrices, comparison tables, and figures.
 """
 
 from pathlib import Path
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from src.modeling.config import (
     METRICS_DIR,
@@ -29,7 +30,6 @@ FIGURES_DIR.mkdir(
     exist_ok=True,
 )
 
-
 # =============================================================================
 # Save metrics
 # =============================================================================
@@ -40,20 +40,9 @@ def save_metrics(
 ):
     """
     Save evaluation metrics.
-
-    Parameters
-    ----------
-    metrics : dict
-        Dictionary containing evaluation metrics.
-
-    filename : str
-        Output CSV filename.
     """
 
-    output_file = (
-        METRICS_DIR /
-        filename
-    )
+    output_file = METRICS_DIR / filename
 
     pd.DataFrame(
         [metrics]
@@ -73,20 +62,9 @@ def save_classification_report(
 ):
     """
     Save a classification report.
-
-    Parameters
-    ----------
-    report : pd.DataFrame
-        Classification report.
-
-    filename : str
-        Output CSV filename.
     """
 
-    output_file = (
-        METRICS_DIR /
-        filename
-    )
+    output_file = METRICS_DIR / filename
 
     report.to_csv(
         output_file,
@@ -104,22 +82,72 @@ def save_confusion_matrix(
 ):
     """
     Save a confusion matrix.
-
-    Parameters
-    ----------
-    confusion_matrix : pd.DataFrame
-        Confusion matrix.
-
-    filename : str
-        Output CSV filename.
     """
 
-    output_file = (
-        METRICS_DIR /
-        filename
-    )
+    output_file = METRICS_DIR / filename
 
     confusion_matrix.to_csv(
         output_file,
         index=True,
+    )
+
+
+# =============================================================================
+# Save comparison table
+# =============================================================================
+
+def save_model_comparison(
+    comparison: pd.DataFrame,
+    filename: str,
+):
+    """
+    Save a model comparison table.
+    """
+
+    output_file = METRICS_DIR / filename
+
+    comparison.to_csv(
+        output_file,
+        index=True,
+    )
+
+
+# =============================================================================
+# Save generic dataframe
+# =============================================================================
+
+def save_table(
+    table: pd.DataFrame,
+    filename: str,
+):
+    """
+    Save a generic dataframe.
+    """
+
+    output_file = METRICS_DIR / filename
+
+    table.to_csv(
+        output_file,
+        index=False,
+    )
+
+
+# =============================================================================
+# Save figure
+# =============================================================================
+
+def save_figure(
+    figure,
+    filename: str,
+):
+    """
+    Save a matplotlib figure.
+    """
+
+    output_file = FIGURES_DIR / filename
+
+    figure.savefig(
+        output_file,
+        dpi=300,
+        bbox_inches="tight",
     )

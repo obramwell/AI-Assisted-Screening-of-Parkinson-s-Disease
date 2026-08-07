@@ -33,7 +33,6 @@ def get_logistic_regression():
     """
 
     model = LogisticRegression(
-        multi_class="multinomial",
         solver="lbfgs",
         max_iter=LOGISTIC_MAX_ITER,
         random_state=RANDOM_STATE,

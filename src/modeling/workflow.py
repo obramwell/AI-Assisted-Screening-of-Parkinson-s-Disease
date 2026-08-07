@@ -1,15 +1,15 @@
 """
-Shared modeling workflow for baseline experiments.
-This module executes the complete machine learning workflow,
-including preprocessing, model training, prediction, and
-evaluation.
+Shared participant-level modeling workflow.
+
+This module executes the common preprocessing,
+training, validation, and evaluation pipeline used by
+all modality-specific experiments.
 """
 
 from sklearn.pipeline import Pipeline
 
 from src.modeling.preprocessing import prepare_dataset
 from src.modeling.evaluation import evaluate_model
-
 
 # =============================================================================
 # Shared workflow
@@ -19,9 +19,10 @@ def run_model(
     model,
     train_df,
     validation_df,
+    test_df=None,
 ):
     """
-    Execute the complete machine learning workflow for a single model.
+    Execute the complete participant-level modeling workflow.
 
     Parameters
     ----------
@@ -34,17 +35,18 @@ def run_model(
     validation_df : pd.DataFrame
         Validation dataset.
 
+    test_df : pd.DataFrame, optional
+        Independent testing dataset.
+
     Returns
     -------
     dict
-        Dictionary containing the trained pipeline,
-        evaluation metrics, classification report,
-        and confusion matrix.
+        Model, metrics, reports, and confusion matrices.
     """
 
-    # ==============================================================
+    # ==========================================================
     # Prepare datasets
-    # ==============================================================
+    # ==========================================================
 
     X_train, y_train, preprocessing = prepare_dataset(
         train_df
@@ -54,9 +56,9 @@ def run_model(
         validation_df
     )
 
-    # ==============================================================
+    # ==========================================================
     # Build pipeline
-    # ==============================================================
+    # ==========================================================
 
     pipeline = Pipeline(
         steps=[
@@ -71,18 +73,18 @@ def run_model(
         ]
     )
 
-    # ==============================================================
-    # Train model
-    # ==============================================================
+    # ==========================================================
+    # Train
+    # ==========================================================
 
     pipeline.fit(
         X_train,
         y_train,
     )
 
-    # ==============================================================
-    # Evaluate model
-    # ==============================================================
+    # ==========================================================
+    # Validation evaluation
+    # ==========================================================
 
     (
         metrics,
@@ -94,12 +96,38 @@ def run_model(
         y_validation,
     )
 
-    return {
+    results = {
         "model": pipeline,
         "metrics": metrics,
         "classification_report": report,
         "confusion_matrix": confusion,
     }
+
+    # ==========================================================
+    # Optional test evaluation
+    # ==========================================================
+
+    if test_df is not None:
+
+        X_test, y_test, _ = prepare_dataset(
+            test_df
+        )
+
+        (
+            test_metrics,
+            test_report,
+            test_confusion,
+        ) = evaluate_model(
+            pipeline,
+            X_test,
+            y_test,
+        )
+
+        results["test_metrics"] = test_metrics
+        results["test_report"] = test_report
+        results["test_confusion_matrix"] = test_confusion
+
+    return results
 
 
 # =============================================================================
@@ -110,6 +138,7 @@ def run_models(
     models,
     train_df,
     validation_df,
+    test_df=None,
 ):
     """
     Train and evaluate multiple machine learning models.
@@ -117,8 +146,7 @@ def run_models(
     Parameters
     ----------
     models : dict
-        Dictionary where the key is the model name and
-        the value is a scikit-learn estimator.
+        Dictionary of model names and estimators.
 
     train_df : pd.DataFrame
         Training dataset.
@@ -126,10 +154,13 @@ def run_models(
     validation_df : pd.DataFrame
         Validation dataset.
 
+    test_df : pd.DataFrame, optional
+        Independent testing dataset.
+
     Returns
     -------
     dict
-        Dictionary containing the results for every model.
+        Results for every model.
     """
 
     results = {}
@@ -140,6 +171,7 @@ def run_models(
             model=model,
             train_df=train_df,
             validation_df=validation_df,
+            test_df=test_df,
         )
 
     return results
