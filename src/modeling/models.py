@@ -6,17 +6,20 @@ modality-specific experiments.
 """
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 from src.modeling.config import (
     RANDOM_STATE,
     CLASS_WEIGHT,
     USE_CLASS_WEIGHT,
     LOGISTIC_MAX_ITER,
-    TREE_CRITERION,
-    TREE_MAX_DEPTH,
+    RF_N_ESTIMATORS,
+    RF_CRITERION,
+    RF_MAX_DEPTH,
+    RF_MIN_SAMPLES_SPLIT,
+    RF_MIN_SAMPLES_LEAF,
+    RF_MAX_FEATURES,
 )
-
 
 # =============================================================================
 # Logistic Regression
@@ -33,39 +36,38 @@ def get_logistic_regression():
     """
 
     model = LogisticRegression(
-        solver="lbfgs",
-        max_iter=LOGISTIC_MAX_ITER,
-        random_state=RANDOM_STATE,
-        class_weight=CLASS_WEIGHT if USE_CLASS_WEIGHT else None,
-    )
+    solver="lbfgs",
+    max_iter=LOGISTIC_MAX_ITER,
+    random_state=RANDOM_STATE,
+    class_weight=CLASS_WEIGHT if USE_CLASS_WEIGHT else None,
+)
 
     return model
-
-
 # =============================================================================
-# Decision Tree
+# Random Forest
 # =============================================================================
-
-def get_decision_tree():
+def get_random_forest():
     """
-    Create a Decision Tree classifier.
+    Create a Random Forest classifier.
 
     Returns
     -------
-    DecisionTreeClassifier
+    RandomForestClassifier
         Configured classifier.
     """
 
-    model = DecisionTreeClassifier(
-        criterion=TREE_CRITERION,
-        max_depth=TREE_MAX_DEPTH,
+    model = RandomForestClassifier(
+        n_estimators=RF_N_ESTIMATORS,
+        criterion=RF_CRITERION,
+        max_depth=RF_MAX_DEPTH,
+        min_samples_split=RF_MIN_SAMPLES_SPLIT,
+        min_samples_leaf=RF_MIN_SAMPLES_LEAF,
+        max_features=RF_MAX_FEATURES,
         random_state=RANDOM_STATE,
         class_weight=CLASS_WEIGHT if USE_CLASS_WEIGHT else None,
     )
 
     return model
-
-
 # =============================================================================
 # Training utilities
 # =============================================================================

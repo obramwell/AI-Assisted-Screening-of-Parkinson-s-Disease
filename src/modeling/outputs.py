@@ -151,3 +151,48 @@ def save_figure(
         dpi=300,
         bbox_inches="tight",
     )
+# =============================================================================
+# Save confusion matrix figure
+# =============================================================================
+
+def save_confusion_matrix_figure(
+    confusion_matrix: pd.DataFrame,
+    filename: str,
+):
+    """
+    Save a confusion matrix as a heatmap figure.
+
+    Parameters
+    ----------
+    confusion_matrix : pd.DataFrame
+        Confusion matrix.
+
+    filename : str
+        Output image filename.
+    """
+    figure, ax = plt.subplots(
+        figsize=(6, 5)
+    )
+    image = ax.imshow( confusion_matrix,cmap="Blues",)
+    plt.colorbar(image, ax=ax,)
+    ax.set_title("Confusion Matrix")
+    ax.set_xlabel("Predicted Label")
+    ax.set_ylabel("True Label")
+    ax.set_xticks(range(confusion_matrix.shape[1]))
+    ax.set_yticks(range(confusion_matrix.shape[0]))
+    ax.set_xticklabels(confusion_matrix.columns)
+    ax.set_yticklabels(confusion_matrix.index)
+    for i in range(confusion_matrix.shape[0]):
+        for j in range(confusion_matrix.shape[1]):
+            ax.text(
+                j,
+                i,
+                confusion_matrix.iloc[i, j],
+                ha="center",
+                va="center",
+                color="black",
+                fontsize=10,
+            )
+    figure.tight_layout()
+    save_figure(figure,filename,)
+    plt.close(figure,)
