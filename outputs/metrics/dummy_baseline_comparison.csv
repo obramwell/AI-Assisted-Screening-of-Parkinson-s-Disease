@@ -1,0 +1,7 @@
+,modality,model,macro_f1,dummy_macro_f1,macro_f1_improvement,balanced_accuracy,dummy_balanced_accuracy,balanced_accuracy_improvement
+0,Demographics,Logistic Regression,0.462,0.248,0.214,0.491,0.333,0.158
+1,Demographics,Random Forest,0.577,0.248,0.33,0.634,0.333,0.301
+2,Questionnaire,Logistic Regression,0.583,0.248,0.335,0.605,0.333,0.271
+3,Questionnaire,Random Forest,0.565,0.248,0.317,0.598,0.333,0.265
+4,Wearable,Logistic Regression,0.476,0.248,0.229,0.483,0.333,0.149
+5,Wearable,Random Forest,0.58,0.248,0.333,0.589,0.333,0.256
