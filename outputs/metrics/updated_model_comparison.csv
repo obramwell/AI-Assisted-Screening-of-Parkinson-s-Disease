@@ -1,0 +1,10 @@
+Rank,Dataset,Model,Balanced Accuracy,CV Std
+1,Demographics + Questionnaire,Random Forest,0.7332269904009034,0.04643538667186448
+2,Multimodal,XGBoost,0.733218520609825,0.04541094928946857
+3,Demographics + Questionnaire,XGBoost,0.7317537172971955,0.05645245863969724
+4,Multimodal,Logistic Regression,0.7159790451094799,0.03848248477035648
+5,Wearable + Questionnaire,Logistic Regression,0.6990295815295816,0.024055102378505378
+6,Multimodal,Random Forest,0.6867508940335026,0.042045732302646355
+7,Wearable + Questionnaire,Random Forest,0.6859164627642889,0.03139796348779042
+8,Demographics + Questionnaire,Logistic Regression,0.6625285463328942,0.017168759861238787
+9,Wearable + Questionnaire,XGBoost,0.653886379321162,0.028507386436724458

@@ -1,0 +1,10 @@
+Dataset,Model,Supports predict_proba,Classes,Probability Sum Check
+Demographics + Questionnaire,Logistic Regression,True,3,True
+Demographics + Questionnaire,Random Forest,True,3,True
+Demographics + Questionnaire,XGBoost,True,3,True
+Wearable + Questionnaire,Logistic Regression,True,3,True
+Wearable + Questionnaire,Random Forest,True,3,True
+Wearable + Questionnaire,XGBoost,True,3,True
+Multimodal,Logistic Regression,True,3,True
+Multimodal,Random Forest,True,3,True
+Multimodal,XGBoost,True,3,True
