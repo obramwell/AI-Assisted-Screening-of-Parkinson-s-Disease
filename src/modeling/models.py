@@ -7,6 +7,7 @@ modality-specific experiments.
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 
 from src.modeling.config import (
     RANDOM_STATE,
@@ -65,6 +66,19 @@ def get_random_forest():
         max_features=RF_MAX_FEATURES,
         random_state=RANDOM_STATE,
         class_weight=CLASS_WEIGHT if USE_CLASS_WEIGHT else None,
+    )
+
+    return model
+# =============================================================================
+# XGBoost
+# =============================================================================
+def get_xgboost():
+
+    model = XGBClassifier(
+        objective="multi:softprob",
+        num_class=3,
+        random_state=RANDOM_STATE,
+        eval_metric="mlogloss",
     )
 
     return model
