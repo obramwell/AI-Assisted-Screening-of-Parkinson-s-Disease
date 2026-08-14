@@ -1,0 +1,10 @@
+Dataset,Model,Filename
+Demographics + Questionnaire,Logistic Regression,demographics_plus_questionnaire_logistic_regression.joblib
+Demographics + Questionnaire,Random Forest,demographics_plus_questionnaire_random_forest.joblib
+Demographics + Questionnaire,XGBoost,demographics_plus_questionnaire_xgboost.joblib
+Wearable + Questionnaire,Logistic Regression,wearable_plus_questionnaire_logistic_regression.joblib
+Wearable + Questionnaire,Random Forest,wearable_plus_questionnaire_random_forest.joblib
+Wearable + Questionnaire,XGBoost,wearable_plus_questionnaire_xgboost.joblib
+Multimodal,Logistic Regression,multimodal_logistic_regression.joblib
+Multimodal,Random Forest,multimodal_random_forest.joblib
+Multimodal,XGBoost,multimodal_xgboost.joblib
