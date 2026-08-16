@@ -1,0 +1,11 @@
+Metric,Value
+Participants,469
+Task-aware time-domain features,1584
+Expected task-aware features,1584
+Total missing values,0
+Features with missing values,0
+Total infinite values,0
+Features with infinite values,0
+Constant features,0
+Low-variance features,45
+Invalid features,0
