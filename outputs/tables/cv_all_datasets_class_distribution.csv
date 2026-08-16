@@ -1,0 +1,10 @@
+dataset,label,count,percentage
+demographics_questionnaire,0,79,16.844349680170577
+demographics_questionnaire,1,276,58.84861407249466
+demographics_questionnaire,2,114,24.307036247334754
+wearable_questionnaire,0,79,16.844349680170577
+wearable_questionnaire,1,276,58.84861407249466
+wearable_questionnaire,2,114,24.307036247334754
+multimodal_full,0,79,16.844349680170577
+multimodal_full,1,276,58.84861407249466
+multimodal_full,2,114,24.307036247334754

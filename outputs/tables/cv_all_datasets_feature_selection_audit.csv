@@ -1,0 +1,16 @@
+dataset,fold,participant_overlap_count,preprocessing_fit_scope,variance_filter_fit_scope,feature_selection_fit_scope,selected_feature_count,validation_used_for_selection,check
+demographics_questionnaire,1,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+demographics_questionnaire,2,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+demographics_questionnaire,3,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+demographics_questionnaire,4,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+demographics_questionnaire,5,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+wearable_questionnaire,1,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+wearable_questionnaire,2,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+wearable_questionnaire,3,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+wearable_questionnaire,4,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+wearable_questionnaire,5,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+multimodal_full,1,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+multimodal_full,2,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+multimodal_full,3,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+multimodal_full,4,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS
+multimodal_full,5,0,training_fold_only,training_fold_only,training_fold_only,20,False,PASS

@@ -1,0 +1,12 @@
+Metric,Value
+Total recordings,10318
+Total time-domain features,72
+Expected time-domain features,72
+Total missing values,0
+Features with missing values,0
+Total infinite values,0
+Features with infinite values,0
+Constant features,0
+Low-variance features,3
+Invalid features,0
+Feature extraction errors,0
