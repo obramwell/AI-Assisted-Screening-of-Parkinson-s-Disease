@@ -14,7 +14,6 @@ feature groups.
 
 DEMOGRAPHIC_FEATURES = [
     "age",
-    "age_at_diagnosis",
     "height_cm",
     "weight_kg",
     "gender",
@@ -57,27 +56,25 @@ QUESTIONNAIRE_FEATURES = (
 # Wearable features
 # =============================================================================
 
-def get_wearable_features(
-    dataframe,
-):
+def get_wearable_features(dataframe):
     """
     Return wearable predictor columns from the
     participant-level wearable feature dataset.
     """
-
     return [
         column
         for column in dataframe.columns
-        if column != "patient_id"
+        if column not in METADATA_COLUMNS
     ]
-
-
 # =============================================================================
 # Metadata / non-predictor columns
 # =============================================================================
 
 METADATA_COLUMNS = [
     "patient_id",
+    "study_id",
+    "condition_original",
     "condition_group",
     "label",
+    "duplicate_patient_id",
 ]

@@ -4,9 +4,9 @@ Modalities compared,3
 Models per modality,3
 Test model results,9
 Participant leakage,No
-Best Macro F1 modality,Questionnaire
+Best Macro F1 modality,Wearable
 Best Macro F1 model,Logistic Regression
-Best Macro F1,0.583
-Best Balanced Accuracy modality,Demographics
-Best Balanced Accuracy model,Random Forest
-Best Balanced Accuracy,0.634
+Best Macro F1,0.668
+Best Balanced Accuracy modality,Wearable
+Best Balanced Accuracy model,Logistic Regression
+Best Balanced Accuracy,0.669
