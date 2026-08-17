@@ -1,0 +1,6 @@
+fold,train_participants,validation_participants,participant_overlap_count,preprocessing_fit_scope,feature_selection_fit_scope,selected_feature_count,leakage_check
+1,375,94,0,training_fold_only,training_fold_only,20,PASS
+2,375,94,0,training_fold_only,training_fold_only,20,PASS
+3,375,94,0,training_fold_only,training_fold_only,20,PASS
+4,375,94,0,training_fold_only,training_fold_only,20,PASS
+5,376,93,0,training_fold_only,training_fold_only,20,PASS
