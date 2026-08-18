@@ -32,15 +32,15 @@ FIGURES_DIR = (
 # =============================================================================
 TRAIN_DATASET = (
     PROCESSED_DIR /
-    "train_participant_dataset.csv"
+    "train_task_aware.csv"
 )
 VALIDATION_DATASET = (
     PROCESSED_DIR /
-    "validation_participant_dataset.csv"
+    "validation_task_aware.csv"
 )
 TEST_DATASET = (
     PROCESSED_DIR /
-    "test_participant_dataset.csv"
+    "test_task_aware.csv"
 )
 # =============================================================================
 # Column names

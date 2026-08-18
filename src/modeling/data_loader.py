@@ -21,7 +21,7 @@ from src.modeling.config import (
 
 FULL_DATASET = (
     PROCESSED_DIR /
-    "integrated_participant_dataset.csv"
+    "multimodal_full_task_aware.csv"
 )
 
 # =============================================================================
