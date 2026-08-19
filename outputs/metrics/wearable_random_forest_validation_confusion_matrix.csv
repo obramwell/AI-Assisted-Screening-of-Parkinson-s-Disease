@@ -1,4 +1,4 @@
 ,Pred_Healthy,Pred_PD,Pred_Other
-True_Healthy,8,4,0
-True_PD,6,27,8
-True_Other,3,7,7
+True_Healthy,10,1,1
+True_PD,6,26,9
+True_Other,1,5,11
