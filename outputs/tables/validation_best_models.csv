@@ -1,0 +1,4 @@
+dataset,rank,model,n_validation,accuracy,balanced_accuracy,macro_f1,precision_macro,recall_macro,result_key
+Demographics + Questionnaire,5,Logistic Regression,70,0.6857142857142857,0.6162920452733939,0.6115512394582162,0.6241462241462241,0.6162920452733939,demographics_questionnaire__logistic_regression
+Full Multimodal,2,Random Forest,70,0.7285714285714285,0.6128646580583452,0.6566801619433198,0.7795414462081128,0.6128646580583452,full_multimodal__random_forest
+Wearable + Questionnaire,1,Logistic Regression,70,0.7285714285714285,0.6554678782081939,0.6809221244705115,0.7217719238995834,0.6554678782081939,wearable_questionnaire__logistic_regression
