@@ -9,7 +9,20 @@ Thumbs.db
 # Project data
 data/raw/
 data/interim/
-data/processed/
+data/processed/*
+
+# Keep official modeling datasets
+!data/processed/train_demographics_questionnaire_task_aware.csv
+!data/processed/validation_demographics_questionnaire_task_aware.csv
+!data/processed/test_demographics_questionnaire_task_aware.csv
+
+!data/processed/train_wearable_questionnaire_task_aware.csv
+!data/processed/validation_wearable_questionnaire_task_aware.csv
+!data/processed/test_wearable_questionnaire_task_aware.csv
+
+!data/processed/train_multimodal_full_task_aware.csv
+!data/processed/validation_multimodal_full_task_aware.csv
+!data/processed/test_multimodal_full_task_aware.csv
 
 # Trained models
 models/
