@@ -1,4 +1,4 @@
-dataset,rank,model,n_validation,accuracy,balanced_accuracy,macro_f1,precision_macro,recall_macro,result_key
-Demographics + Questionnaire,5,Logistic Regression,70,0.6857142857142857,0.6162920452733939,0.6115512394582162,0.6241462241462241,0.6162920452733939,demographics_questionnaire__logistic_regression
-Full Multimodal,2,Random Forest,70,0.7285714285714285,0.6128646580583452,0.6566801619433198,0.7795414462081128,0.6128646580583452,full_multimodal__random_forest
-Wearable + Questionnaire,1,Logistic Regression,70,0.7285714285714285,0.6554678782081939,0.6809221244705115,0.7217719238995834,0.6554678782081939,wearable_questionnaire__logistic_regression
+dataset,rank,result_key,model,n_validation,feature_selection__k,accuracy,balanced_accuracy,macro_f1,precision_macro,recall_macro
+Demographics + Questionnaire,7,demographics_questionnaire__logistic_regression,Logistic Regression,70,all,0.7142857142857143,0.624382273234497,0.6369468719655985,0.6777777777777777,0.624382273234497
+Full Multimodal,1,full_multimodal__xgboost,XGBoost,70,1000,0.7857142857142857,0.7469312928423402,0.7657171414292853,0.7946690990169252,0.7469312928423402
+Wearable + Questionnaire,3,wearable_questionnaire__xgboost,XGBoost,70,1000,0.7571428571428571,0.6995456719273075,0.7097701149425287,0.7330917874396135,0.6995456719273075
