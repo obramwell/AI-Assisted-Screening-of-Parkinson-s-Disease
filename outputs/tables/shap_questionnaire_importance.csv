@@ -1,0 +1,11 @@
+Feature,Mean |SHAP|,Modality
+numerical__Q25,0.018868098626793693,Questionnaire
+numerical__Q02,0.01675610468664789,Questionnaire
+numerical__Q08,0.005551249885097524,Questionnaire
+numerical__Q03,0.00454555867299592,Questionnaire
+numerical__Q01,0.0045151983485834475,Questionnaire
+numerical__Q05,0.003317356515972091,Questionnaire
+numerical__Q09,0.003201712725258033,Questionnaire
+numerical__Q07,0.0030160024959549627,Questionnaire
+numerical__Q19,0.002191670376681414,Questionnaire
+numerical__Q12,0.0006745964313385972,Questionnaire
