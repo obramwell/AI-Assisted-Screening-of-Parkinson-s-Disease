@@ -1,4 +1,4 @@
 dataset,model,artifact_filename,test_file,n_test,added_missing_features,accuracy,balanced_accuracy,macro_f1,precision_macro,recall_macro
-Demographics + Questionnaire,Logistic Regression,demographics_plus_questionnaire_logistic_regression.joblib,test_demographics_questionnaire_task_aware.csv,71,urinary_count,0.6338028169014085,0.6174136321195145,0.5861398798107659,0.5737612612612613,0.6174136321195145
-Full Multimodal,Random Forest,full_multimodal_random_forest.joblib,test_multimodal_full_task_aware.csv,71,urinary_count,0.704225352112676,0.7084500466853408,0.6728230581678858,0.6542827657378741,0.7084500466853408
-Wearable + Questionnaire,Random Forest,wearable_plus_questionnaire_random_forest.joblib,test_wearable_questionnaire_task_aware.csv,71,urinary_count,0.704225352112676,0.6769374416433239,0.6536931134676957,0.6432926829268293,0.6769374416433239
+Demographics + Questionnaire,Logistic Regression,demographics_plus_questionnaire_logistic_regression.joblib,test_demographics_questionnaire_task_aware.csv,71,,0.6338028169014085,0.6057422969187676,0.5750000000000001,0.5631578947368422,0.6057422969187676
+Full Multimodal,Random Forest,full_multimodal_random_forest.joblib,test_multimodal_full_task_aware.csv,71,,0.704225352112676,0.7084500466853408,0.6728230581678858,0.6542827657378741,0.7084500466853408
+Wearable + Questionnaire,Random Forest,wearable_plus_questionnaire_random_forest.joblib,test_wearable_questionnaire_task_aware.csv,71,,0.6901408450704225,0.6608309990662932,0.6411149825783973,0.6319444444444445,0.6608309990662932
