@@ -1,0 +1,214 @@
+patient_id,dataset,model,true_label,predicted_label
+18,Demographics + Questionnaire,Logistic Regression,2,2
+25,Demographics + Questionnaire,Logistic Regression,1,1
+28,Demographics + Questionnaire,Logistic Regression,1,1
+43,Demographics + Questionnaire,Logistic Regression,2,1
+51,Demographics + Questionnaire,Logistic Regression,1,0
+53,Demographics + Questionnaire,Logistic Regression,1,0
+55,Demographics + Questionnaire,Logistic Regression,1,1
+60,Demographics + Questionnaire,Logistic Regression,1,2
+63,Demographics + Questionnaire,Logistic Regression,1,1
+66,Demographics + Questionnaire,Logistic Regression,2,2
+67,Demographics + Questionnaire,Logistic Regression,1,2
+74,Demographics + Questionnaire,Logistic Regression,1,2
+80,Demographics + Questionnaire,Logistic Regression,0,0
+82,Demographics + Questionnaire,Logistic Regression,1,1
+114,Demographics + Questionnaire,Logistic Regression,2,1
+115,Demographics + Questionnaire,Logistic Regression,1,1
+122,Demographics + Questionnaire,Logistic Regression,1,1
+130,Demographics + Questionnaire,Logistic Regression,2,2
+131,Demographics + Questionnaire,Logistic Regression,1,1
+140,Demographics + Questionnaire,Logistic Regression,2,0
+148,Demographics + Questionnaire,Logistic Regression,0,1
+153,Demographics + Questionnaire,Logistic Regression,0,1
+160,Demographics + Questionnaire,Logistic Regression,0,0
+161,Demographics + Questionnaire,Logistic Regression,2,2
+166,Demographics + Questionnaire,Logistic Regression,1,1
+167,Demographics + Questionnaire,Logistic Regression,0,0
+168,Demographics + Questionnaire,Logistic Regression,2,2
+175,Demographics + Questionnaire,Logistic Regression,1,1
+181,Demographics + Questionnaire,Logistic Regression,1,1
+185,Demographics + Questionnaire,Logistic Regression,1,1
+189,Demographics + Questionnaire,Logistic Regression,1,1
+191,Demographics + Questionnaire,Logistic Regression,2,2
+193,Demographics + Questionnaire,Logistic Regression,0,0
+195,Demographics + Questionnaire,Logistic Regression,2,0
+213,Demographics + Questionnaire,Logistic Regression,2,1
+235,Demographics + Questionnaire,Logistic Regression,1,1
+239,Demographics + Questionnaire,Logistic Regression,1,1
+243,Demographics + Questionnaire,Logistic Regression,1,1
+245,Demographics + Questionnaire,Logistic Regression,1,1
+246,Demographics + Questionnaire,Logistic Regression,1,1
+249,Demographics + Questionnaire,Logistic Regression,1,2
+257,Demographics + Questionnaire,Logistic Regression,1,1
+265,Demographics + Questionnaire,Logistic Regression,1,1
+286,Demographics + Questionnaire,Logistic Regression,1,1
+291,Demographics + Questionnaire,Logistic Regression,2,1
+295,Demographics + Questionnaire,Logistic Regression,0,0
+300,Demographics + Questionnaire,Logistic Regression,1,1
+321,Demographics + Questionnaire,Logistic Regression,2,0
+322,Demographics + Questionnaire,Logistic Regression,1,1
+330,Demographics + Questionnaire,Logistic Regression,2,1
+331,Demographics + Questionnaire,Logistic Regression,1,2
+333,Demographics + Questionnaire,Logistic Regression,1,0
+335,Demographics + Questionnaire,Logistic Regression,0,0
+343,Demographics + Questionnaire,Logistic Regression,1,0
+352,Demographics + Questionnaire,Logistic Regression,1,0
+357,Demographics + Questionnaire,Logistic Regression,1,2
+358,Demographics + Questionnaire,Logistic Regression,1,1
+359,Demographics + Questionnaire,Logistic Regression,2,0
+361,Demographics + Questionnaire,Logistic Regression,1,2
+366,Demographics + Questionnaire,Logistic Regression,1,1
+369,Demographics + Questionnaire,Logistic Regression,1,1
+371,Demographics + Questionnaire,Logistic Regression,0,0
+374,Demographics + Questionnaire,Logistic Regression,1,1
+380,Demographics + Questionnaire,Logistic Regression,1,1
+382,Demographics + Questionnaire,Logistic Regression,2,1
+391,Demographics + Questionnaire,Logistic Regression,0,0
+396,Demographics + Questionnaire,Logistic Regression,2,2
+420,Demographics + Questionnaire,Logistic Regression,0,0
+430,Demographics + Questionnaire,Logistic Regression,1,2
+442,Demographics + Questionnaire,Logistic Regression,1,1
+459,Demographics + Questionnaire,Logistic Regression,0,2
+18,Full Multimodal,Random Forest,2,2
+25,Full Multimodal,Random Forest,1,1
+28,Full Multimodal,Random Forest,1,2
+43,Full Multimodal,Random Forest,2,1
+51,Full Multimodal,Random Forest,1,2
+53,Full Multimodal,Random Forest,1,1
+55,Full Multimodal,Random Forest,1,1
+60,Full Multimodal,Random Forest,1,1
+63,Full Multimodal,Random Forest,1,1
+66,Full Multimodal,Random Forest,2,2
+67,Full Multimodal,Random Forest,1,1
+74,Full Multimodal,Random Forest,1,2
+80,Full Multimodal,Random Forest,0,0
+82,Full Multimodal,Random Forest,1,1
+114,Full Multimodal,Random Forest,2,2
+115,Full Multimodal,Random Forest,1,1
+122,Full Multimodal,Random Forest,1,1
+130,Full Multimodal,Random Forest,2,1
+131,Full Multimodal,Random Forest,1,1
+140,Full Multimodal,Random Forest,2,0
+148,Full Multimodal,Random Forest,0,0
+153,Full Multimodal,Random Forest,0,1
+160,Full Multimodal,Random Forest,0,0
+161,Full Multimodal,Random Forest,2,1
+166,Full Multimodal,Random Forest,1,2
+167,Full Multimodal,Random Forest,0,0
+168,Full Multimodal,Random Forest,2,1
+175,Full Multimodal,Random Forest,1,1
+181,Full Multimodal,Random Forest,1,1
+185,Full Multimodal,Random Forest,1,1
+189,Full Multimodal,Random Forest,1,2
+191,Full Multimodal,Random Forest,2,1
+193,Full Multimodal,Random Forest,0,0
+195,Full Multimodal,Random Forest,2,0
+213,Full Multimodal,Random Forest,2,1
+235,Full Multimodal,Random Forest,1,1
+239,Full Multimodal,Random Forest,1,2
+243,Full Multimodal,Random Forest,1,1
+245,Full Multimodal,Random Forest,1,1
+246,Full Multimodal,Random Forest,1,1
+249,Full Multimodal,Random Forest,1,0
+257,Full Multimodal,Random Forest,1,1
+265,Full Multimodal,Random Forest,1,2
+286,Full Multimodal,Random Forest,1,1
+291,Full Multimodal,Random Forest,2,2
+295,Full Multimodal,Random Forest,0,0
+300,Full Multimodal,Random Forest,1,1
+321,Full Multimodal,Random Forest,2,2
+322,Full Multimodal,Random Forest,1,1
+330,Full Multimodal,Random Forest,2,2
+331,Full Multimodal,Random Forest,1,2
+333,Full Multimodal,Random Forest,1,0
+335,Full Multimodal,Random Forest,0,0
+343,Full Multimodal,Random Forest,1,1
+352,Full Multimodal,Random Forest,1,1
+357,Full Multimodal,Random Forest,1,1
+358,Full Multimodal,Random Forest,1,1
+359,Full Multimodal,Random Forest,2,0
+361,Full Multimodal,Random Forest,1,1
+366,Full Multimodal,Random Forest,1,1
+369,Full Multimodal,Random Forest,1,1
+371,Full Multimodal,Random Forest,0,0
+374,Full Multimodal,Random Forest,1,0
+380,Full Multimodal,Random Forest,1,1
+382,Full Multimodal,Random Forest,2,2
+391,Full Multimodal,Random Forest,0,0
+396,Full Multimodal,Random Forest,2,2
+420,Full Multimodal,Random Forest,0,0
+430,Full Multimodal,Random Forest,1,1
+442,Full Multimodal,Random Forest,1,1
+459,Full Multimodal,Random Forest,0,0
+18,Wearable + Questionnaire,Random Forest,2,1
+25,Wearable + Questionnaire,Random Forest,1,1
+28,Wearable + Questionnaire,Random Forest,1,2
+43,Wearable + Questionnaire,Random Forest,2,1
+51,Wearable + Questionnaire,Random Forest,1,2
+53,Wearable + Questionnaire,Random Forest,1,1
+55,Wearable + Questionnaire,Random Forest,1,1
+60,Wearable + Questionnaire,Random Forest,1,1
+63,Wearable + Questionnaire,Random Forest,1,1
+66,Wearable + Questionnaire,Random Forest,2,2
+67,Wearable + Questionnaire,Random Forest,1,1
+74,Wearable + Questionnaire,Random Forest,1,2
+80,Wearable + Questionnaire,Random Forest,0,0
+82,Wearable + Questionnaire,Random Forest,1,1
+114,Wearable + Questionnaire,Random Forest,2,2
+115,Wearable + Questionnaire,Random Forest,1,1
+122,Wearable + Questionnaire,Random Forest,1,1
+130,Wearable + Questionnaire,Random Forest,2,1
+131,Wearable + Questionnaire,Random Forest,1,1
+140,Wearable + Questionnaire,Random Forest,2,0
+148,Wearable + Questionnaire,Random Forest,0,0
+153,Wearable + Questionnaire,Random Forest,0,1
+160,Wearable + Questionnaire,Random Forest,0,0
+161,Wearable + Questionnaire,Random Forest,2,1
+166,Wearable + Questionnaire,Random Forest,1,1
+167,Wearable + Questionnaire,Random Forest,0,0
+168,Wearable + Questionnaire,Random Forest,2,1
+175,Wearable + Questionnaire,Random Forest,1,1
+181,Wearable + Questionnaire,Random Forest,1,1
+185,Wearable + Questionnaire,Random Forest,1,1
+189,Wearable + Questionnaire,Random Forest,1,2
+191,Wearable + Questionnaire,Random Forest,2,1
+193,Wearable + Questionnaire,Random Forest,0,0
+195,Wearable + Questionnaire,Random Forest,2,0
+213,Wearable + Questionnaire,Random Forest,2,1
+235,Wearable + Questionnaire,Random Forest,1,1
+239,Wearable + Questionnaire,Random Forest,1,2
+243,Wearable + Questionnaire,Random Forest,1,1
+245,Wearable + Questionnaire,Random Forest,1,1
+246,Wearable + Questionnaire,Random Forest,1,1
+249,Wearable + Questionnaire,Random Forest,1,0
+257,Wearable + Questionnaire,Random Forest,1,1
+265,Wearable + Questionnaire,Random Forest,1,2
+286,Wearable + Questionnaire,Random Forest,1,1
+291,Wearable + Questionnaire,Random Forest,2,2
+295,Wearable + Questionnaire,Random Forest,0,0
+300,Wearable + Questionnaire,Random Forest,1,1
+321,Wearable + Questionnaire,Random Forest,2,2
+322,Wearable + Questionnaire,Random Forest,1,1
+330,Wearable + Questionnaire,Random Forest,2,2
+331,Wearable + Questionnaire,Random Forest,1,1
+333,Wearable + Questionnaire,Random Forest,1,0
+335,Wearable + Questionnaire,Random Forest,0,0
+343,Wearable + Questionnaire,Random Forest,1,1
+352,Wearable + Questionnaire,Random Forest,1,1
+357,Wearable + Questionnaire,Random Forest,1,1
+358,Wearable + Questionnaire,Random Forest,1,1
+359,Wearable + Questionnaire,Random Forest,2,0
+361,Wearable + Questionnaire,Random Forest,1,1
+366,Wearable + Questionnaire,Random Forest,1,1
+369,Wearable + Questionnaire,Random Forest,1,1
+371,Wearable + Questionnaire,Random Forest,0,0
+374,Wearable + Questionnaire,Random Forest,1,0
+380,Wearable + Questionnaire,Random Forest,1,1
+382,Wearable + Questionnaire,Random Forest,2,2
+391,Wearable + Questionnaire,Random Forest,0,0
+396,Wearable + Questionnaire,Random Forest,2,2
+420,Wearable + Questionnaire,Random Forest,0,2
+430,Wearable + Questionnaire,Random Forest,1,1
+442,Wearable + Questionnaire,Random Forest,1,1
+459,Wearable + Questionnaire,Random Forest,0,0
