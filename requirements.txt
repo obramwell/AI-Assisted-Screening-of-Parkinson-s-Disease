@@ -1,26 +1,38 @@
-numpy==2.4.6
-pandas==3.0.3
-scipy==1.18.0
-scikit-learn==1.9.0
-xgboost==3.4.0
+# Core Libraries
+numpy
+pandas
+scipy
 
-matplotlib==3.11.1
-openpyxl==3.1.5
-joblib==1.5.3
-tqdm==4.70.0
+# Machine Learning
+scikit-learn
+xgboost
+joblib
 
-cvxpy==1.9.2
-cvxopt==1.3.3
-clarabel==0.11.1
-highspy==1.15.1
-osqp==1.1.3
-scs==3.2.11
-sparsediffpy==0.3.0
+# Explainable AI
+shap
+numba
+llvmlite
 
-shap==0.52.0
-numba==0.66.0
-llvmlite==0.48.0
+# Optimization (Trend Filtering)
+cvxpy
+cvxopt
+clarabel
+highspy
+osqp
+scs
+sparsediffpy
 
+# Data Processing
+openpyxl
+tqdm
+
+# Visualization
+matplotlib
+plotly
+
+# Dashboard
 streamlit
+streamlit-option-menu==0.4.0
 
-jupyter==1.1.1
+# Development
+jupyter

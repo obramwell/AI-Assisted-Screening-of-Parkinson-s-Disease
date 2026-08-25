@@ -1,0 +1,243 @@
+/* ==========================================================
+   GLOBAL LAYOUT
+========================================================== */
+
+.block-container{
+    padding-top:1.5rem;
+    padding-bottom:2rem;
+    padding-left:3rem;
+    padding-right:3rem;
+    max-width:1450px;
+}
+
+/* ==========================================================
+   HIDE STREAMLIT DEFAULTS
+========================================================== */
+
+#MainMenu{
+    visibility:hidden;
+}
+
+footer{
+    visibility:hidden;
+}
+
+header{
+    visibility:hidden;
+}
+
+/* ==========================================================
+   APP BACKGROUND
+========================================================== */
+
+.stApp{
+    background:#F8FAFC;
+}
+
+/* ==========================================================
+   TITLES
+========================================================== */
+
+h1{
+    color:#12355B;
+    font-weight:700;
+}
+
+h2{
+    color:#12355B;
+    font-weight:600;
+}
+
+h3{
+    color:#12355B;
+    font-weight:600;
+}
+
+h4{
+    color:#12355B;
+}
+
+p{
+    color:#4B5563;
+    font-size:16px;
+    line-height:1.7;
+}
+
+/* ==========================================================
+   HORIZONTAL MENU
+========================================================== */
+
+div[data-testid="stHorizontalBlock"]{
+    align-items:center;
+}
+
+/* option-menu */
+
+.nav{
+    background:white !important;
+    border-radius:12px !important;
+    border:1px solid #E5E7EB !important;
+    padding:6px !important;
+    box-shadow:0 1px 4px rgba(0,0,0,.05);
+}
+
+.nav-link{
+
+    color:#12355B !important;
+
+    font-weight:600 !important;
+
+    font-size:16px !important;
+
+    border-radius:10px !important;
+
+    margin-left:4px;
+
+    margin-right:4px;
+
+    transition:.25s;
+}
+
+.nav-link:hover{
+
+    background:#EAF4FD !important;
+
+    color:#12355B !important;
+}
+
+.nav-link-selected{
+
+    background:#2E86DE !important;
+
+    color:white !important;
+}
+
+/* ==========================================================
+   METRICS
+========================================================== */
+
+div[data-testid="metric-container"]{
+
+    background:white;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.04);
+
+    transition:.25s;
+}
+
+div[data-testid="metric-container"]:hover{
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+label[data-testid="stMetricLabel"]{
+
+    color:#6B7280;
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+div[data-testid="stMetricValue"]{
+
+    color:#12355B;
+
+    font-size:34px;
+
+    font-weight:700;
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.stButton>button{
+
+    border-radius:10px;
+
+    border:none;
+
+    background:#2E86DE;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.2s;
+}
+
+.stButton>button:hover{
+
+    background:#1D6FD3;
+}
+
+/* ==========================================================
+   DATAFRAMES
+========================================================== */
+
+div[data-testid="stDataFrame"]{
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    border:1px solid #E5E7EB;
+}
+
+/* ==========================================================
+   INFO BOXES
+========================================================== */
+
+div[data-testid="stAlert"]{
+
+    border-radius:12px;
+}
+
+/* ==========================================================
+   DIVIDERS
+========================================================== */
+
+hr{
+
+    border-top:1px solid #E5E7EB;
+}
+
+/* ==========================================================
+   SIDEBAR (hidden)
+========================================================== */
+
+section[data-testid="stSidebar"]{
+
+    display:none;
+}
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+img{
+
+    border-radius:12px;
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    text-align:center;
+
+    color:#94A3B8;
+
+    font-size:13px;
+
+    margin-top:30px;
+}
