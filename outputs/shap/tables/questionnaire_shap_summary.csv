@@ -1,0 +1,11 @@
+Rank,Item,Questionnaire Response,Mean |SHAP|
+1,Q25,Talking or moving during sleep as if acting out a dream,0.0189
+2,Q02,Loss or change in the ability to taste or smell,0.0168
+3,Q08,Urinary urgency,0.0056
+4,Q03,Difficulty swallowing food or drink,0.0045
+5,Q01,Dribbling of saliva during the daytime,0.0045
+6,Q05,Constipation or straining during bowel movements,0.0033
+7,Q09,Frequently getting up at night to urinate,0.0032
+8,Q07,Feeling of incomplete bowel emptying,0.003
+9,Q19,Difficulty having sex,0.0022
+10,Q12,Problems remembering recent events,0.0007
