@@ -1,6 +1,5 @@
 dataset,fold,feature,selection_score
-multimodal_full,5,total_symptom_count,56.4851345162296
-multimodal_full,5,urinal_count,42.700707913284056
+multimodal_full,5,urinary_count,42.700707913284056
 multimodal_full,5,Q02,39.64141908919253
 multimodal_full,5,distortion_perception_count,39.307045689732035
 multimodal_full,5,Q08,33.26458717050949
@@ -19,3 +18,4 @@ multimodal_full,5,LiftHold_Right_AccMag_Min,20.296773355544808
 multimodal_full,5,LiftHold_LeftWrist_acc_x_spectral_entropy,20.28648176039629
 multimodal_full,5,HoldWeight_Left_GyroZ_IQR,19.837889681007848
 multimodal_full,5,CrossArms_LeftWrist_gyro_magnitude_spectral_entropy,19.525090864735116
+multimodal_full,5,CrossArms_Left_AccY_IQR,19.400249357993374
