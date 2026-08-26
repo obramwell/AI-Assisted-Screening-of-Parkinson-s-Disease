@@ -1,6 +1,5 @@
 dataset,fold,feature,selection_score
-multimodal_full,4,total_symptom_count,61.8374961343855
-multimodal_full,4,urinal_count,41.062345662636375
+multimodal_full,4,urinary_count,41.062345662636375
 multimodal_full,4,distortion_perception_count,35.229410837083456
 multimodal_full,4,Q02,34.71206402674895
 multimodal_full,4,sleep_fatigue_count,33.55365713793758
@@ -19,3 +18,4 @@ multimodal_full,4,HoldWeight_LeftWrist_acc_z_spectral_entropy,19.508337733985456
 multimodal_full,4,Q09,19.15644501687684
 multimodal_full,4,LiftHold_Left_AccX_IQR,18.287665945123695
 multimodal_full,4,HoldWeight_RightWrist_acc_z_spectral_entropy,17.966891024161953
+multimodal_full,4,Q05,17.803339295828764
