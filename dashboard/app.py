@@ -10,6 +10,7 @@ from views import (
     Performance,
     Explainability,
     Prediction,
+    ResponsibleUse,
     About
 )
 
@@ -81,6 +82,7 @@ selected = option_menu(
         "Performance",
         "Explainability",
         "Prediction",
+        "Responsible Use",
         "About"
     ],
 
@@ -89,6 +91,7 @@ selected = option_menu(
         "graph-up",
         "cpu",
         "person-badge",
+        "shield-check",
         "journal-medical"
     ],
 
@@ -114,6 +117,9 @@ elif selected == "Explainability":
 
 elif selected == "Prediction":
     Prediction.show()
+    
+elif selected == "Responsible Use":
+    ResponsibleUse.show()
 
 elif selected == "About":
     About.show()
