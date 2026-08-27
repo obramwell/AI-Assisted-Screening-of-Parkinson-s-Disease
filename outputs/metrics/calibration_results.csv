@@ -1,0 +1,10 @@
+Model,Calibration_Method,Multiclass_Brier_Score,Validation_Accuracy,Improvement_vs_Uncalibrated
+Demographics + Questionnaire Random Forest,Uncalibrated,0.45347987594053935,0.6571428571428571,0.0
+Demographics + Questionnaire Random Forest,Sigmoid,0.42279190803436656,0.6571428571428571,0.030687967906172786
+Demographics + Questionnaire Random Forest,Isotonic,0.4229183859995051,0.6428571428571429,0.030561489941034248
+Wearable + Questionnaire Random Forest,Uncalibrated,0.3855922232377094,0.8,0.0
+Wearable + Questionnaire Random Forest,Sigmoid,0.31209051239113267,0.7857142857142857,0.07350171084657675
+Wearable + Questionnaire Random Forest,Isotonic,0.3043907314259629,0.8142857142857143,0.08120149181174652
+Full Multimodal Random Forest,Uncalibrated,0.3826426053033615,0.7428571428571429,0.0
+Full Multimodal Random Forest,Sigmoid,0.31957209048036944,0.7857142857142857,0.06307051482299209
+Full Multimodal Random Forest,Isotonic,0.3060317804427766,0.8,0.0766108248605849
