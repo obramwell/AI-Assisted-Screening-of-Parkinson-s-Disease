@@ -225,6 +225,7 @@ section[data-testid="stSidebar"]{
 img{
 
     border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 /* ==========================================================
@@ -240,4 +241,134 @@ img{
     font-size:13px;
 
     margin-top:30px;
+}
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero-title{
+    color:#12355B;
+    font-size:2.5rem;
+    font-weight:700;
+    margin-bottom:.25rem;
+}
+
+.hero-subtitle{
+    color:#64748B;
+    font-size:1.2rem;
+    margin-bottom:1.5rem;
+}
+
+/* ==========================================================
+   PIPELINE
+========================================================== */
+
+.pipeline{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:15px;
+
+    margin-bottom:20px;
+}
+
+.pipeline-card{
+
+    background:white;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    width:145px;
+
+    height:125px;
+
+    text-align:center;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.pipeline-icon{
+
+    font-size:34px;
+}
+
+.pipeline-title{
+
+    color:#12355B;
+
+    font-weight:600;
+
+    margin-top:10px;
+
+    font-size:16px;
+}
+
+.pipeline-text{
+
+    color:#6B7280;
+
+    font-size:13px;
+
+    margin-top:6px;
+}
+
+.pipeline-arrow{
+
+    font-size:28px;
+
+    color:#2E86DE;
+
+    font-weight:bold;
+}
+
+/* ==========================================================
+   FEATURE CARDS
+========================================================== */
+
+.feature-card{
+
+    background:white;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+    height:190px;
+}
+
+.feature-card h3{
+
+    margin-top:0;
+}
+
+.feature-card p{
+
+    font-size:15px;
+}
+
+/* ==========================================================
+   SECTION SPACING
+========================================================== */
+
+.section{
+
+    margin-top:20px;
+
+    margin-bottom:20px;
 }
