@@ -14,6 +14,16 @@ from utils.paths import (
     SHAP_SENSOR,
     SHAP_WRIST,
     SHAP_QUESTIONNAIRE,
+    
+    SHAP_BEESWARM_GLOBAL,
+    BEESWARM_HEALTHY,
+    BEESWARM_PD,
+    BEESWARM_OMD,
+
+    WATERFALL_HEALTHY,
+    WATERFALL_PD,
+    WATERFALL_OMD,
+
     GLOBAL_SHAP,
     MODALITY_TABLE,
     TASK_TABLE,
@@ -46,29 +56,46 @@ questionnaire domains contributed to the model predictions.
             "🖐️ Tasks",
             "⌚ Sensors",
             "📝 Questionnaire",
-            "🧠 Classes",
+            "🧠 Class Explanation",
         ]
     )
 
     # GLOBAL
     with tab1:
-        st.subheader("Global SHAP Feature Importance")
+        st.subheader("Global SHAP Beeswarm")
         st.write(
             """
-The figure below presents the twenty most influential predictors identified
-by SHAP across the complete test set.
-"""
+    The SHAP beeswarm plot summarizes the distribution of feature
+    contributions across all participants. Individual class-specific
+    beeswarm plots can also be explored below.
+    """
         )
-        image = load_image(SHAP_BAR)
+        option = st.selectbox(
+            "Select visualization",
+            [
+                "Global",
+                "Healthy Controls",
+                "Parkinson's Disease",
+                "Other Movement Disorders",
+            ],
+        )
+        if option == "Global":
+            image = load_image(SHAP_BEESWARM_GLOBAL)
+        elif option == "Healthy Controls":
+            image = load_image(BEESWARM_HEALTHY)
+        elif option == "Parkinson's Disease":
+            image = load_image(BEESWARM_PD)
+        else:
+            image = load_image(BEESWARM_OMD)
         if image:
             st.image(
                 image,
                 use_container_width=True,
             )
-        st.markdown("### Global Ranking")
+        st.divider()
+        st.subheader("Top Ranked Features")
         table = load_csv(GLOBAL_SHAP)
         if table is not None:
-
             st.dataframe(
                 table,
                 use_container_width=True,
@@ -188,3 +215,35 @@ by SHAP across the complete test set.
                 use_container_width=True,
                 hide_index=True,
             )
+        st.divider()
+
+        st.subheader("Participant-level SHAP Explanation")
+
+        st.write(
+            """
+        The waterfall plot illustrates how the most influential features
+        contributed to the prediction of a representative participant from the
+        selected diagnostic class.
+        """
+        )
+        if option == "Healthy Controls":
+            image = load_image(WATERFALL_HEALTHY)
+
+        elif option == "Parkinson's Disease":
+
+            image = load_image(WATERFALL_PD)
+
+        else:
+
+            image = load_image(WATERFALL_OMD)
+
+        if image:
+
+            left, center, right = st.columns([1,2,1])
+
+            with center:
+
+                st.image(
+                    image,
+                    use_container_width=True,
+                )

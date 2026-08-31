@@ -25,7 +25,18 @@ METRICS = OUTPUTS / "metrics"
 SHAP = OUTPUTS / "shap"
 SHAP_FIGURES = SHAP / "figures"
 SHAP_TABLES = SHAP / "tables"
+# Global SHAP
 SHAP_BAR = SHAP_FIGURES / "Top 20 Global SHAP Features.png"
+# Global Beeswarm
+SHAP_BEESWARM_GLOBAL = SHAP_FIGURES / "shap_beeswarm_global.png"
+# Class-specific Beeswarm
+BEESWARM_HEALTHY = SHAP_FIGURES / "beeswarm_Healthy.png"
+BEESWARM_PD = SHAP_FIGURES / "beeswarm_Parkinsons_Disease.png"
+BEESWARM_OMD = SHAP_FIGURES / "beeswarm_Other_Movement_Disorders.png"
+# Local SHAP
+WATERFALL_HEALTHY = ( SHAP_FIGURES /"waterfall_Healthy_patient_160.png")
+WATERFALL_PD = (SHAP_FIGURES /"waterfall_Parkinsons_Disease_patient_25.png")
+WATERFALL_OMD = (SHAP_FIGURES / "waterfall_Other_Movement_Disorders_patient_66.png")
 
 SHAP_MODALITY = SHAP_FIGURES / "shap_modality_importance.png"
 SHAP_TASK = SHAP_FIGURES / "shap_task_importance.png"

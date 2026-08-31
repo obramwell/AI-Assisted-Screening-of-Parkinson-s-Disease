@@ -1,11 +1,26 @@
 Rank,Item,Questionnaire Response,Mean |SHAP|
-1,Q25,Talking or moving during sleep as if acting out a dream,0.0229
-2,Q02,Loss or change in the ability to taste or smell,0.0206
-3,Q05,Constipation or straining during bowel movements,0.0056
-4,Q01,Dribbling of saliva during the daytime,0.0049
-5,Q08,Urinary urgency,0.0047
-6,Q03,Difficulty swallowing food or drink,0.0041
-7,Q09,Frequently getting up at night to urinate,0.0035
-8,Q19,Difficulty having sex,0.0033
-9,Q07,Feeling of incomplete bowel emptying,0.0024
-10,Q12,Problems remembering recent events,0.0008
+1,Q25,Talking or moving during sleep as if acting out a dream,0.1192
+2,Q02,Loss or change in the ability to taste or smell,0.0807
+3,Q01,Dribbling of saliva during the daytime,0.0122
+4,Q08,Urinary urgency,0.0119
+5,Q22,Difficulty staying awake during activities,0.005
+6,Q05,Constipation or straining during bowel movements,0.0016
+7,Q09,Frequently getting up at night to urinate,0.0008
+8,Q26,Unpleasant leg sensations at rest,0.0007
+9,Q15,Difficulty concentrating,1e-04
+10,Q27,Swelling of the legs,0.0
+11,Q12,Problems remembering recent events,0.0
+12,Q13,Loss of interest in activities,0.0
+13,Q14,Seeing or hearing things that are not there,0.0
+14,Q16,Feeling sad or low,0.0
+15,Q18,Changes in sexual interest,0.0
+16,Q19,Difficulty having sex,0.0
+17,Q20,Light-headedness when standing,0.0
+18,Q29,Double vision,0.0
+19,Q30,Believing things that others say are not true,0.0
+20,Q10,Unexplained pain,0.0
+21,Q28,Excessive sweating,0.0
+22,Q24,Intense or vivid dreams,0.0
+23,Q21,Falling,0.0
+24,Q03,Difficulty swallowing food or drink,0.0
+25,Q07,Feeling of incomplete bowel emptying,0.0
