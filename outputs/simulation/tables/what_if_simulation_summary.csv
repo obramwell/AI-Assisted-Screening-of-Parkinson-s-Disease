@@ -1,0 +1,6 @@
+Scenario,Healthy Controls,Parkinson's Disease,Other Movement Disorders
+Baseline,0.043,0.704,0.253
+Scenario 1: Non-Motor Symptoms,0.043,0.704,0.253
+Scenario 2: Questionnaire ,0.009,0.917,0.074
+Scenario 3: Wearable,0.048,0.784,0.168
+Scenario 4: Combined,0.009,0.946,0.045
