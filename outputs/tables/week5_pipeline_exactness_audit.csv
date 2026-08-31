@@ -1,10 +1,10 @@
 dataset,model,artifact_filename,pipeline_steps,variance_threshold,feature_selection__k,classifier_class,added_missing_features,refit_in_validation,status
 Demographics + Questionnaire,Logistic Regression,demographics_plus_questionnaire_logistic_regression.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,all,LogisticRegression,,False,PASS
 Demographics + Questionnaire,Random Forest,demographics_plus_questionnaire_random_forest.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,50,RandomForestClassifier,,False,PASS
-Demographics + Questionnaire,XGBoost,demographics_plus_questionnaire_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,all,XGBClassifier,,False,PASS
-Full Multimodal,Logistic Regression,full_multimodal_logistic_regression.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,1000,LogisticRegression,,False,PASS
+Demographics + Questionnaire,XGBoost,demographics_plus_questionnaire_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,50,XGBClassifier,,False,PASS
+Full Multimodal,Logistic Regression,full_multimodal_logistic_regression.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,100,LogisticRegression,,False,PASS
 Full Multimodal,Random Forest,full_multimodal_random_forest.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,50,RandomForestClassifier,,False,PASS
-Full Multimodal,XGBoost,full_multimodal_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,1000,XGBClassifier,,False,PASS
-Wearable + Questionnaire,Logistic Regression,wearable_plus_questionnaire_logistic_regression.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,1000,LogisticRegression,,False,PASS
+Full Multimodal,XGBoost,full_multimodal_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,500,XGBClassifier,,False,PASS
+Wearable + Questionnaire,Logistic Regression,wearable_plus_questionnaire_logistic_regression.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,250,LogisticRegression,,False,PASS
 Wearable + Questionnaire,Random Forest,wearable_plus_questionnaire_random_forest.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,50,RandomForestClassifier,,False,PASS
-Wearable + Questionnaire,XGBoost,wearable_plus_questionnaire_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,1000,XGBClassifier,,False,PASS
+Wearable + Questionnaire,XGBoost,wearable_plus_questionnaire_xgboost.joblib,preprocessing -> variance_filter -> feature_selection -> classifier,0.0,100,XGBClassifier,,False,PASS

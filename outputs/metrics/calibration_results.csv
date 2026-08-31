@@ -1,0 +1,10 @@
+Dataset,Model,Calibration,Brier_Score,Log_Loss
+Demographics + Questionnaire,Logistic Regression,Uncalibrated,0.48590340250347014,0.7906540616826737
+Wearable + Questionnaire,Random Forest,Uncalibrated,0.3960477178683688,0.6761391678382123
+Full Multimodal,XGBoost,Uncalibrated,0.3941722670322641,0.6353675127029419
+Demographics + Questionnaire,Logistic Regression,Sigmoid,0.4378917618761042,0.7337297611036948
+Wearable + Questionnaire,Random Forest,Sigmoid,0.356913594893899,0.602309767889916
+Full Multimodal,XGBoost,Sigmoid,0.40619709613570926,0.6884463518378628
+Demographics + Questionnaire,Logistic Regression,Isotonic,0.4900950982409824,4.966803670593573
+Wearable + Questionnaire,Random Forest,Isotonic,0.3898065416996508,2.4795203292493286
+Full Multimodal,XGBoost,Isotonic,0.3754311879743962,1.0647515780175405
