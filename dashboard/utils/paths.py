@@ -49,7 +49,7 @@ TEST_RESULTS = METRICS / "test_results.csv"
 VALIDATION_TEST_COMPARISON = (TABLES / "validation_test_comparison.csv")
 CALIBRATION_RESULTS = (METRICS / "calibration_results.csv")
 # FULL MULTIMODAL (FINAL MODEL)
-FULL_CM = (METRICS/ "full_multimodal_xgboost_test_confusion_matrix.csv")
+FULL_CM = FIGURES / "full_multimodal_xgboost_test_confusion_matrix.png"
 FULL_CLASSIFICATION_REPORT = (METRICS/ "full_multimodal_xgboost_test_classification_report.csv")
 FULL_CALIBRATION = (FIGURES/ "calibration_full_multimodal.png")
 # ASSETS

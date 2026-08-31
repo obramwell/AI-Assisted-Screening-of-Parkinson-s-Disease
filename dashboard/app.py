@@ -7,9 +7,11 @@ from utils.styles import load_css
 
 from views import (
     Home,
-    Performance,
+    ParticipantOverview,
+    SignalExplorer,
+    WhatIfSimulator,
     Explainability,
-    Prediction,
+    Performance, 
     ResponsibleUse,
     About
 )
@@ -79,21 +81,25 @@ selected = option_menu(
 
     options=[
         "Home",
-        "Performance",
+        "Participant Overview",
+        "Signal Explorer",
+        "What-if Simulator",
         "Explainability",
-        "Prediction",
+        "Performance",
         "Responsible Use",
         "About"
     ],
 
     icons=[
-        "house-fill",
-        "graph-up",
-        "cpu",
-        "person-badge",
-        "shield-check",
-        "journal-medical"
-    ],
+    "house-fill",
+    "person-badge",
+    "activity",
+    "sliders",
+    "cpu",
+    "bar-chart-line",
+    "shield-check",
+    "info-circle",
+    ], 
 
     default_index=0,
 
@@ -109,14 +115,20 @@ st.divider()
 if selected == "Home":
     Home.show()
 
-elif selected == "Performance":
-    Performance.show()
+elif selected == "Participant Overview":
+    ParticipantOverview.show()
+    
+elif selected == "Signal Explorer":
+    SignalExplorer.show()
+
+elif selected == "What-if Simulator":
+    WhatIfSimulator.show()
 
 elif selected == "Explainability":
     Explainability.show()
 
-elif selected == "Prediction":
-    Prediction.show()
+elif selected == "Performance":
+    Performance.show()
     
 elif selected == "Responsible Use":
     ResponsibleUse.show()
