@@ -1,169 +1,214 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
-from pathlib import Path
+from utils.styles import load_css
+from utils.loaders import load_csv, load_image
 
-# PATHS
-ROOT = Path(__file__).resolve().parents[2]
+from utils.paths import (
+    TEST_RESULTS,
+    VALIDATION_TEST_COMPARISON,
+    CALIBRATION_RESULTS,
+    FULL_CM,
+    FULL_CLASSIFICATION_REPORT,
+    FULL_CALIBRATION,
+)
 
-FIGURES = ROOT / "outputs" / "figures"
-TABLES = ROOT / "outputs" / "tables"
 
-# PAGE
 def show():
 
-    st.title("📈 Model Performance")
+    load_css()
+
+    st.title("Model Performance")
 
     st.write(
         """
-Evaluate the predictive performance of the final Full Multimodal
-XGBoost classifier using the independent test set.
+This section summarizes the predictive performance of the final Full
+Multimodal XGBoost classifier evaluated on the independent participant-level
+test set.
+
+The reported metrics include overall classification performance,
+class-specific evaluation, confusion matrix, probability calibration,
+and comparison between validation and test performance.
 """
     )
 
     st.divider()
-    # METRICS
-    st.subheader("Overall Performance")
 
-    metrics_file = TABLES / "test_metrics.csv"
+    # OVERALL PERFORMANCE
 
-    if metrics_file.exists():
+    st.subheader("Overall Test Performance")
 
-        metrics = pd.read_csv(metrics_file)
+    metrics = load_csv(TEST_RESULTS)
 
-        c1, c2, c3, c4 = st.columns(4)
-
+    if metrics is not None:
+        metrics = metrics[
+            metrics["dataset"] == "Full Multimodal"
+        ].reset_index(drop=True)
+        c1, c2, c3, c4, c5 = st.columns(5)
         with c1:
             st.metric(
                 "Accuracy",
-                f"{metrics.loc[0,'Accuracy']:.3f}"
+                f"{metrics.loc[0,'accuracy']:.3f}",
             )
-
         with c2:
             st.metric(
-                "Macro F1",
-                f"{metrics.loc[0,'Macro F1']:.3f}"
+                "Balanced Accuracy",
+                f"{metrics.loc[0,'balanced_accuracy']:.3f}",
             )
-
         with c3:
             st.metric(
-                "Balanced Accuracy",
-                f"{metrics.loc[0,'Balanced Accuracy']:.3f}"
+                "Macro F1",
+                f"{metrics.loc[0,'macro_f1']:.3f}",
             )
-
         with c4:
             st.metric(
-                "ROC AUC",
-                f"{metrics.loc[0,'ROC AUC']:.3f}"
+                "Precision",
+                f"{metrics.loc[0,'precision_macro']:.3f}",
             )
-
+        with c5:
+            st.metric(
+                "Recall",
+                f"{metrics.loc[0,'recall_macro']:.3f}",
+            )
     else:
-
-        st.info("Metrics file not found.")
-
+        st.info("Overall performance metrics not available.")
     st.divider()
     # CONFUSION MATRIX
+
     st.subheader("Confusion Matrix")
 
-    img = FIGURES / "confusion_matrix.png"
+    st.write(
+        """
+The confusion matrix summarizes the number of correctly and incorrectly
+classified participants for each diagnostic class.
+"""
+    )
 
-    if img.exists():
+    cm = load_csv(FULL_CM)
 
-        st.image(
-            img,
-            use_container_width=True
+    if cm is not None:
+
+        fig, ax = plt.subplots(figsize=(6,5))
+
+        im = ax.imshow(cm.values)
+
+        ax.set_xticks(range(len(cm.columns)))
+        ax.set_xticklabels(cm.columns)
+
+        ax.set_yticks(range(len(cm.index)))
+        ax.set_yticklabels(cm.index)
+
+        ax.set_xlabel("Predicted Class")
+        ax.set_ylabel("True Class")
+
+        for i in range(cm.shape[0]):
+            for j in range(cm.shape[1]):
+                ax.text(
+                    j,
+                    i,
+                    str(cm.iloc[i, j]),
+                    ha="center",
+                    va="center",
+                )
+
+        plt.colorbar(im)
+
+        st.pyplot(fig)
+
+    else:
+
+        st.info("Confusion matrix not available.")
+
+    st.divider()
+
+    # CLASSIFICATION REPORT
+
+    st.subheader("Classification Report")
+
+    st.write(
+        """
+Class-wise precision, recall, F1-score, and support obtained on the
+independent participant-level test set.
+"""
+    )
+
+    report = load_csv(FULL_CLASSIFICATION_REPORT)
+
+    if report is not None:
+
+        st.dataframe(
+            report,
+            use_container_width=True,
+            hide_index=True,
         )
 
     else:
 
-        st.warning("Confusion Matrix not available.")
+        st.info("Classification report not available.")
 
     st.divider()
 
-    # ROC
-    st.subheader("ROC Curves")
-
-    img = FIGURES / "roc_curves.png"
-
-    if img.exists():
-
-        st.image(
-            img,
-            use_container_width=True
-        )
-
-    else:
-
-        st.warning("ROC Curves not available.")
-
-    st.divider()
-
-    # ===================================================
-    # PR
-    # ===================================================
-
-    st.subheader("Precision-Recall Curves")
-
-    img = FIGURES / "precision_recall_curves.png"
-
-    if img.exists():
-
-        st.image(
-            img,
-            use_container_width=True
-        )
-
-    else:
-
-        st.warning("Precision-Recall Curves not available.")
-
-    st.divider()
-
-    # ===================================================
     # CALIBRATION
-    # ===================================================
 
     st.subheader("Probability Calibration")
 
-    img = FIGURES / "calibration_curve.png"
+    st.write(
+        """
+Calibration curves compare predicted probabilities with the observed
+frequencies for each diagnostic class. The figure below corresponds to
+the final Full Multimodal XGBoost model.
+"""
+    )
 
-    if img.exists():
+    image = load_image(FULL_CALIBRATION)
+
+    if image is not None:
 
         st.image(
-            img,
-            use_container_width=True
+            image,
+            use_container_width=True,
         )
 
     else:
 
-        st.info("Calibration results coming soon.")
+        st.info("Calibration figure not available.")
+
+    calibration = load_csv(CALIBRATION_RESULTS)
+
+    if calibration is not None:
+
+        st.markdown("#### Calibration Results")
+
+        st.dataframe(
+            calibration,
+            use_container_width=True,
+            hide_index=True,
+        )
 
     st.divider()
 
-    # ===================================================
-    # MODEL COMPARISON
-    # ===================================================
+    # VALIDATION VS TEST
 
-    st.subheader("Model Comparison")
+    st.subheader("Validation vs Test Performance")
 
-    comparison = TABLES / "model_comparison.csv"
+    st.write(
+        """
+Comparison between validation and independent test performance for the
+candidate machine-learning models evaluated during model selection.
+"""
+    )
 
-    if comparison.exists():
+    comparison = load_csv(VALIDATION_TEST_COMPARISON)
 
-        df = pd.read_csv(comparison)
+    if comparison is not None:
 
         st.dataframe(
-            df,
+            comparison,
             use_container_width=True,
-            hide_index=True
-        )
-
-        st.download_button(
-            "Download CSV",
-            df.to_csv(index=False),
-            "model_comparison.csv"
+            hide_index=True,
         )
 
     else:
 
-        st.info("Comparison table not found.")
+        st.info("Validation-test comparison not available.")

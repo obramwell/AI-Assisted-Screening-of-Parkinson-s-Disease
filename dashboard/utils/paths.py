@@ -19,6 +19,7 @@ OUTPUTS = PROJECT_ROOT / "outputs"
 # General folders
 FIGURES = OUTPUTS / "figures"
 TABLES = OUTPUTS / "tables"
+METRICS = OUTPUTS / "metrics"
 
 # SHAP
 SHAP = OUTPUTS / "shap"
@@ -44,10 +45,13 @@ PD_TABLE = SHAP_TABLES / "shap_importance_Parkinsons_Disease.csv"
 OMD_TABLE = SHAP_TABLES / "shap_importance_Other_Movement_Disorders.csv"
 
 # Performance
-PERFORMANCE = OUTPUTS / "performance"
-PERFORMANCE_FIGURES = PERFORMANCE / "figures"
-PERFORMANCE_TABLES = PERFORMANCE / "tables"
-
+TEST_RESULTS = METRICS / "test_results.csv"
+VALIDATION_TEST_COMPARISON = (TABLES / "validation_test_comparison.csv")
+CALIBRATION_RESULTS = (METRICS / "calibration_results.csv")
+# FULL MULTIMODAL (FINAL MODEL)
+FULL_CM = (METRICS/ "full_multimodal_xgboost_test_confusion_matrix.csv")
+FULL_CLASSIFICATION_REPORT = (METRICS/ "full_multimodal_xgboost_test_classification_report.csv")
+FULL_CALIBRATION = (FIGURES/ "calibration_full_multimodal.png")
 # ASSETS
 ASSETS = PROJECT_ROOT / "dashboard" / "assets"
 LOGO = ASSETS / "logo.png"
