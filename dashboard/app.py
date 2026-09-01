@@ -11,7 +11,8 @@ from views import (
     SignalExplorer,
     WhatIfSimulator,
     Explainability,
-    Performance, 
+    Performance,
+    ConformalPrediction,
     ResponsibleUse,
     About
 )
@@ -86,6 +87,7 @@ selected = option_menu(
         "What-if Simulator",
         "Explainability",
         "Performance",
+        "Prediction Uncertainty",
         "Responsible Use",
         "About"
     ],
@@ -97,6 +99,7 @@ selected = option_menu(
     "sliders",
     "cpu",
     "bar-chart-line",
+    "patch-check",
     "shield-check",
     "info-circle",
     ], 
@@ -129,7 +132,10 @@ elif selected == "Explainability":
 
 elif selected == "Performance":
     Performance.show()
-    
+
+elif selected == "Prediction Uncertainty":
+    ConformalPrediction.show()
+
 elif selected == "Responsible Use":
     ResponsibleUse.show()
 

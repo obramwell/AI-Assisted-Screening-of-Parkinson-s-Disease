@@ -67,3 +67,16 @@ FULL_CALIBRATION = (FIGURES/ "calibration_full_multimodal.png")
 ASSETS = PROJECT_ROOT / "dashboard" / "assets"
 LOGO = ASSETS / "logo.png"
 BANNER = ASSETS / "banner.png"
+# CONFORMAL PREDICTION
+CONFORMAL = OUTPUTS / "conformal"
+CONFORMAL_FIGURES = CONFORMAL / "figures"
+CONFORMAL_TABLES = CONFORMAL / "tables"
+CONFORMITY_COMPARISON = (CONFORMAL_TABLES /"conformity_score_comparison.csv")
+CONFIDENCE_COMPARISON = (CONFORMAL_TABLES /"confidence_level_comparison.csv")
+SELECTED_CONFIGURATION = (CONFORMAL_TABLES /"selected_conformal_configuration.csv")
+PREDICTION_SET_SUMMARY = (CONFORMAL_TABLES /"prediction_set_summary.csv")
+COVERAGE_CONFIDENCE = (CONFORMAL_FIGURES /"coverage_vs_confidence.png")
+SETSIZE_CONFIDENCE = (CONFORMAL_FIGURES /"prediction_set_size_vs_confidence.png")
+SINGLETON_CONFIDENCE = (CONFORMAL_FIGURES /"singleton_rate_vs_confidence.png")
+AMBIGUOUS_CONFIDENCE = (CONFORMAL_FIGURES /"ambiguous_rate_vs_confidence.png")
+TRADEOFF = (CONFORMAL_FIGURES /"conformity_score_tradeoff.png")

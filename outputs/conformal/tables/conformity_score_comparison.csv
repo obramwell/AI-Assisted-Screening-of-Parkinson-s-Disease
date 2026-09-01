@@ -1,0 +1,8 @@
+Method,Coverage,Average Prediction Set Size,Singleton Prediction Rate,Ambiguous Prediction Rate,Empty Prediction Rate,Status
+APS,1.0,2.323943661971831,0.09859154929577464,0.9014084507042254,0.0,Success
+RAPS,,,,,,"Number of samples of the score is too low,
+1/confidence_level and 1/(1 - confidence_level) must be
+lower than the number of samples."
+LAC,0.971830985915493,1.7746478873239437,0.36619718309859156,0.6338028169014085,0.0,Success
+Top-K,1.0,3.0,0.0,1.0,0.0,Success
+Naive,0.9859154929577465,1.9154929577464788,0.28169014084507044,0.7183098591549296,0.0,Success

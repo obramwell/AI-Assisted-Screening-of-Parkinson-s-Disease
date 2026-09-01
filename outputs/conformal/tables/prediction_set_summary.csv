@@ -1,0 +1,72 @@
+Participant,True Class,Predicted Class,Prediction Set,Prediction Set Size
+18,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+25,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+28,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+43,Other Movement Disorders,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+51,Parkinson's Disease,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+53,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+55,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+60,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+63,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+66,Other Movement Disorders,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+67,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+74,Parkinson's Disease,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+80,Healthy,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+82,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+114,Other Movement Disorders,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+115,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease",2
+122,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+130,Other Movement Disorders,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+131,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+140,Other Movement Disorders,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+148,Healthy,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+153,Healthy,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+160,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+161,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+166,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+167,Healthy,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+168,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+175,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease",2
+181,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+185,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+189,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+191,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+193,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+195,Other Movement Disorders,Other Movement Disorders,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+213,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+235,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+239,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+243,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+245,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+246,Parkinson's Disease,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+249,Parkinson's Disease,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+257,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+265,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+286,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+291,Other Movement Disorders,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+295,Healthy,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+300,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+321,Other Movement Disorders,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+322,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+330,Other Movement Disorders,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+331,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+333,Parkinson's Disease,Healthy,"Healthy, Parkinson's Disease",2
+335,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+343,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease",2
+352,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+357,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+358,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+359,Other Movement Disorders,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+361,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+366,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+369,Parkinson's Disease,Parkinson's Disease,Parkinson's Disease,1
+371,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+374,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+380,Parkinson's Disease,Parkinson's Disease,"Parkinson's Disease, Other Movement Disorders",2
+382,Other Movement Disorders,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+391,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+396,Other Movement Disorders,Other Movement Disorders,"Parkinson's Disease, Other Movement Disorders",2
+420,Healthy,Healthy,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+430,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+442,Parkinson's Disease,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
+459,Healthy,Parkinson's Disease,"Healthy, Parkinson's Disease, Other Movement Disorders",3
