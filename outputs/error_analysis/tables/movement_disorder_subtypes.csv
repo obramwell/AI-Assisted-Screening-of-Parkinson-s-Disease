@@ -1,0 +1,5 @@
+condition_original,Participants,Correct,Accuracy,Misclassified,Misclassification Rate
+Atypical Parkinsonism,4,1,0.25,3,0.75
+Other Movement Disorders,8,2,0.25,6,0.75
+Essential Tremor,4,4,1.0,0,0.0
+Multiple Sclerosis,1,1,1.0,0,0.0
