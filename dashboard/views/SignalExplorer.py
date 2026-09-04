@@ -114,9 +114,7 @@ def compute_fft(
         d=1 / sampling_frequency,
     )
 
-    magnitude = np.abs(
-        np.fft.rfft(signal)
-    )
+    magnitude = np.abs(np.fft.rfft(signal))
 
     return frequencies, magnitude
 # SIGNAL SUMMARY
@@ -346,7 +344,7 @@ visualize the processed accelerometer and gyroscope signals.
 
             hovermode="x unified",
 
-            height=550,
+            height=520,
 
             xaxis_title="Time (seconds)",
 
@@ -364,6 +362,22 @@ visualize the processed accelerometer and gyroscope signals.
 
             ),
 
+        )
+        if duration <= 5:
+            dtick = 0.5
+        elif duration <= 10:
+            dtick = 1
+        elif duration <= 20:
+            dtick = 2
+        else:
+            dtick = 5
+
+        figure.update_xaxes(
+            range=[
+                recording["Time"].min(),
+                recording["Time"].max(),
+            ],
+            dtick=dtick,
         )
 
         st.plotly_chart(
@@ -384,78 +398,73 @@ visualize the processed accelerometer and gyroscope signals.
     # FREQUENCY SPECTRUM
     with tab2:
         st.subheader("Frequency Spectrum")
+        fft_figure = go.Figure()
 
-    fft_figure = go.Figure()
+        for channel in selected_channels:
 
-    for channel in selected_channels:
+            frequencies, magnitude = compute_fft(
+                recording[channel],
+                sampling_frequency,
+            )
 
-        frequencies, magnitude = compute_fft(
+            # Remove DC component
+            frequencies = frequencies[1:]
+            magnitude = magnitude[1:]
 
-            recording[channel],
+            fft_figure.add_trace(
 
-            sampling_frequency,
+                go.Scatter(
 
-        )
+                    x=frequencies,
 
-        fft_figure.add_trace(
+                    y=magnitude,
 
-            go.Scatter(
+                    mode="lines",
 
-                x=frequencies,
+                    name=channel,
 
-                y=magnitude,
+                    line=dict(
+                        color=CHANNEL_COLORS[channel],
+                        width=2,
+                    ),
 
-                mode="lines",
-
-                name=channel,
-
-                line=dict(
-
-                    color=CHANNEL_COLORS[channel],
-
-                    width=2,
-
-                ),
+                )
 
             )
 
+        fft_figure.update_layout(
+
+            template="plotly_white",
+
+            hovermode="x unified",
+
+            height=520,
+
+            xaxis_title="Frequency (Hz)",
+
+            yaxis_title="Magnitude",
+
         )
 
-    fft_figure.update_layout(
+        fft_figure.update_xaxes(
+            range=[1, min(20, sampling_frequency / 2)]
+        )
 
-        template="plotly_white",
+        st.plotly_chart(
 
-        hovermode="x unified",
+            fft_figure,
 
-        height=500,
+            use_container_width=True,
 
-        xaxis_title="Frequency (Hz)",
+            config={
 
-        yaxis_title="Magnitude",
+                "displaylogo": False,
 
-    )
+                    "responsive": True,
 
-    fft_figure.update_xaxes(
+                },
 
-        range=[0,20]
-
-    )
-
-    st.plotly_chart(
-
-        fft_figure,
-
-        use_container_width=True,
-
-        config={
-
-            "displaylogo": False,
-
-            "responsive": True,
-
-        },
-
-    )
+            )
     
     # SIGNAL STATISTICS
     with tab3:
@@ -471,13 +480,11 @@ visualize the processed accelerometer and gyroscope signals.
             summary,
             use_container_width=True,
         )
-        csv = recording.to_csv(
-            index=False,
-        ).encode("utf-8")
+        csv = recording.to_csv(index=False).encode("utf-8")
 
         st.download_button(
             "Download Recording",
-            recording.to_csv(index=False),
+            csv,
             file_name=f"{participant}_{selected_task}_{selected_wrist}.csv",
             mime="text/csv",
         )

@@ -1,0 +1,9 @@
+Component,Selected Configuration
+Final Machine Learning Model,Full Multimodal XGBoost
+Selected Conformity Score,Least Ambiguous Classifier (LAC)
+Confidence Level,95%
+Empirical Coverage,0.972
+Average Prediction Set Size,1.775
+Singleton Prediction Rate,0.366
+Ambiguous Prediction Rate,0.634
+Empty Prediction Rate,0.000
