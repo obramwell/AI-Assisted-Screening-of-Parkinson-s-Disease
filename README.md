@@ -197,13 +197,23 @@ The dashboard supports exploration of:
 
 The interactive dashboard was developed using Streamlit.
 
-### Install the required dependencies
+### Step 1: Install the required dependencies
 
 From the project root directory, run:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### Step 2: Launch the dashboard
+
+From the project root directory, run:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+The dashboard will open in your browser.
 
 ---
 
