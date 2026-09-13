@@ -38,17 +38,17 @@ WATERFALL_HEALTHY = ( SHAP_FIGURES /"waterfall_Healthy_patient_160.png")
 WATERFALL_PD = (SHAP_FIGURES /"waterfall_Parkinsons_Disease_patient_25.png")
 WATERFALL_OMD = (SHAP_FIGURES / "waterfall_Other_Movement_Disorders_patient_66.png")
 
-SHAP_MODALITY = SHAP_FIGURES / "shap_modality_importance.png"
-SHAP_TASK = SHAP_FIGURES / "shap_task_importance.png"
-SHAP_SENSOR = SHAP_FIGURES / "shap_sensor_importance.png"
-SHAP_WRIST = SHAP_FIGURES / "shap_wrist_importance.png"
+SHAP_MODALITY = SHAP_FIGURES / "shap_modality_total_corrected.png"
+SHAP_TASK = SHAP_FIGURES / "shap_task_total_corrected.png"
+SHAP_SENSOR = SHAP_FIGURES / "shap_modality_total_corrected.png"
+SHAP_WRIST = SHAP_FIGURES / "shap_wrist_corrected.png"
 SHAP_QUESTIONNAIRE = SHAP_FIGURES / "shap_questionnaire_importance.png"
 
 GLOBAL_SHAP = SHAP_TABLES / "global_shap_importance.csv"
-MODALITY_TABLE = SHAP_TABLES / "shap_modality_importance.csv"
-TASK_TABLE = SHAP_TABLES / "shap_task_importance.csv"
-SENSOR_TABLE = SHAP_TABLES / "shap_sensor_importance.csv"
-WRIST_TABLE = SHAP_TABLES / "shap_wrist_importance.csv"
+MODALITY_TABLE = SHAP_TABLES / "shap_modality_corrected.csv"
+TASK_TABLE = SHAP_TABLES / "shap_task_corrected.csv"
+SENSOR_TABLE = SHAP_TABLES / "shap_sensor_corrected.csv"
+WRIST_TABLE = SHAP_TABLES / "shap_wrist_corrected.csv"
 QUESTIONNAIRE_TABLE = SHAP_TABLES / "questionnaire_shap_summary.csv"
 QUESTIONNAIRE_IMPORTANCE = SHAP_TABLES / "shap_questionnaire_importance.csv"
 HEALTHY_TABLE = SHAP_TABLES / "shap_importance_Healthy.csv"
