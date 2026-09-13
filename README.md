@@ -42,14 +42,15 @@ The objectives of this project are to:
 - Develop a reproducible multimodal machine learning pipeline.
 - Prepare and analyze demographic, questionnaire, movement, and wearable sensor data.
 - Assess signal quality and perform wearable signal preprocessing.
-- Extract and evaluate relevant features from the available data.
+- Extract and aggregate relevant features from the available data.
 - Develop baseline models using individual data modalities.
 - Develop and evaluate multimodal classification models.
 - Apply cross-validation, feature selection, and hyperparameter tuning.
-- Evaluate model performance using validation and final test data.
-- Assess the reliability of predicted probabilities using calibration analysis.
+- Evaluate model performance using validation and independent test data.
+- Assess the reliability of predicted probabilities through calibration analysis.
 - Identify and examine incorrect predictions through error analysis.
 - Provide global and participant-level explainability using SHAP.
+- Apply conformal prediction to provide prediction sets and additional information about model uncertainty.
 - Develop a what-if simulation component to explore changes in model predictions.
 - Develop an interactive Streamlit dashboard to present and explore the project's analytical results.
 
@@ -73,51 +74,44 @@ The dataset includes multiple sources of information, including:
 
 ## 🔄 Project Workflow
 
-The project was completed through the following stages:
+The project was completed through the following analytical stages:
 
-1. Data audit
+1. Data audit and dataset assessment
 2. Questionnaire cleaning and demographic preparation
 3. Movement metadata inspection
 4. Raw wearable signal inspection
 5. Signal quality assessment
-6. Participant data splitting
+6. Participant-level data splitting
 7. Signal preprocessing and validation
 8. Correlation and feature quality analysis
 9. Task and wrist analysis
 10. Task-aware data integration
 11. Modality-specific baseline model development
-12. Model results comparison
+12. Baseline model results comparison
 13. Multimodal data integration
 14. Cross-validation and feature selection
 15. Hyperparameter tuning
 16. Validation evaluation
-17. Final test evaluation
+17. Independent test evaluation
 18. Calibration analysis
 19. SHAP-based explainability
 20. Error analysis
 21. What-if simulation
-22. Interactive dashboard development
+22. Conformal prediction analysis
+23. Interactive dashboard development
 
 ---
 
-## 🗂️ Repository Structure
+## 📁 Repository Structure
 
 ```text
 AI-Assisted-Screening-of-Parkinson-s-Disease/
 │
-├── assets/
-│   └── logo.png
-│
-├── dashboard/
-│
 ├── data/
 │   ├── raw/
 │   ├── interim/
-│   │   └── timeseries/
 │   ├── processed/
 │   └── data_dictionary/
-│
-├── models/
 │
 ├── notebooks/
 │   ├── 01_data_audit.ipynb
@@ -145,54 +139,27 @@ AI-Assisted-Screening-of-Parkinson-s-Disease/
 │   ├── 13_calibration_analysis.ipynb
 │   ├── 14_SHAP_Explainability.ipynb
 │   ├── 15_error_analysis.ipynb
-│   └── 16_What-if_Simulation.ipynb
-│
-├── outputs/
-│   ├── error_analysis/
-│   ├── figures/
-│   ├── metrics/
-│   ├── shap/
-│   ├── simulation/
-│   └── tables/
-│
-├── reports/
-│
-├── scripts/
+│   ├── 16_What-if_Simulation.ipynb
+│   └── 17_conformal_analysis.ipynb
 │
 ├── src/
 │   ├── features/
-│   │   ├── frequency_features.py
-│   │   ├── magnitude.py
-│   │   └── time_features.py
-│   │
 │   ├── modeling/
-│   │   ├── baseline.py
-│   │   ├── config.py
-│   │   ├── data_loader.py
-│   │   ├── evaluation.py
-│   │   ├── feature_sets.py
-│   │   ├── models.py
-│   │   ├── outputs.py
-│   │   ├── preprocessing.py
-│   │   ├── split_validation.py
-│   │   ├── tuning.py
-│   │   └── workflow.py
-│   │
 │   ├── preprocessing/
-│   │   ├── l1_trend_filter.py
-│   │   ├── preprocessing.py
-│   │   ├── run_signal_preprocessing.py
-│   │   └── signal_preprocessing.py
-│   │
 │   ├── utilities/
 │   ├── data_loading.py
 │   ├── evaluation.py
 │   └── feature_engineering.py
 │
+├── models/
+├── outputs/
+├── dashboard/
+├── scripts/
+│   └── validation/
+├── reports/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-
 ```
 ---
 
@@ -205,6 +172,7 @@ The project generates analytical outputs throughout the workflow, including:
 - SHAP explainability results
 - Error analysis outputs
 - What-if simulation results
+- Conformal prediction and uncertainty results
 - Summary tables
 
 All project outputs are organized within the `outputs/` directory.
@@ -217,39 +185,41 @@ An interactive Streamlit dashboard was developed to bring together and present t
 
 The dashboard supports exploration of:
 
-- Model results
-- Explainability findings
+- Model performance
+- SHAP findings
+- Signal exploration
+- Predictions
 - Error analysis
+- Conformal prediction
 - What-if simulation
 
 ## ▶️ Running the Dashboard
 
 The interactive dashboard was developed using Streamlit.
 
-### Install the required dependencies
+### Step 1: Install the required dependencies
 
 From the project root directory, run:
 
 ```bash
 pip install -r requirements.txt
-
 ```
 
----
+### Step 2: Launch the dashboard
 
-### Launch the dashboard
-
-Run the Streamlit application:
+From the project root directory, run:
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
+The dashboard will open in your browser.
+
 ---
 
 ## 📊 Key Results
 
-The multimodal machine learning approach achieved the strongest overall performance by combining demographic, questionnaire, and wearable-derived features.
+The multimodal machine learning approach achieved the strongest overall performance across the evaluated feature configurations, with the Full Multimodal XGBoost model achieving the highest test accuracy and Macro F1-score.
 
 ### Best Performing Model
 
@@ -269,7 +239,7 @@ The model outperformed the other selected feature configurations in terms of ove
 
 These findings suggest that combining **demographic, questionnaire, and wearable-derived information** provides stronger predictive performance than the evaluated reduced feature configurations.
 
-The final model showed lower performance on previously unseen participants compared with validation results, highlighting the importance of independent testing when evaluating machine learning models. 
+The final model showed lower performance on previously unseen participants compared with validation results, highlighting the importance of independent testing when evaluating machine learning models.
 
 ---
 
@@ -285,7 +255,17 @@ Based on the project findings and identified limitations, the following areas ar
 
 - **Continue improving model generalization:** Future work could explore additional data, refined feature engineering approaches, and model optimization techniques to improve performance on previously unseen participants.
 
-- **Maintain appropriate clinical boundaries:** The prototype should continue to be treated as an analytical screening-support tool for research and educational purposes and not as a replacement for professional clinical diagnosis.
+- **Maintain appropriate clinical boundaries:** The prototype should be treated as an analytical screening-support tool for research and educational purposes and not as a replacement for professional clinical diagnosis.
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates the potential of a multimodal machine learning approach for supporting the screening of Parkinson's disease by combining demographic, questionnaire, and wearable-derived information.
+
+The Full Multimodal XGBoost model achieved **71.83% accuracy** and **64.25% Macro F1-score** on the independent test dataset. However, the lower performance on previously unseen participants highlights the importance of further validation and model generalization.
+
+The project also incorporates explainability, error analysis, what-if simulation, and conformal prediction to provide additional context around model predictions. Overall, the prototype demonstrates how machine learning can be explored as a **screening-support tool**, while maintaining appropriate boundaries around clinical diagnosis.
 
 ---
 
@@ -304,11 +284,15 @@ The project uses the following technologies and tools:
 - Python
 - Pandas
 - NumPy
+- SciPy
 - Scikit-learn
+- XGBoost
 - SHAP
 - Matplotlib
+- Plotly
 - Jupyter Notebook
 - Streamlit
+- Streamlit Option Menu
 - Git
 - GitHub
 
